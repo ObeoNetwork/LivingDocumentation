@@ -1,0 +1,41 @@
+Document {
+ Chapter Specification {
+ @author "Firstname Name":mailto:firstname.name@obeo.fr
+  Section Specification Resource{
+   @M
+    Resource SpecificationResource {
+     URI = "platform:/resource/org.obeonetwork.dsl.uml2.doc.spec/model/umlDesigner.specification";
+     content += specification;
+    }
+   M@
+  }
+ }
+ Chapter Scope {
+ @TODO
+ }
+ 
+ Chapter Features {
+  Section Feature 1{
+   @TODO
+   Section User Stories{
+    Section User story 1{
+     As
+     I want
+     So that
+	   
+     Section Scenarios{
+      Section Scenario 1{
+       Given
+       When
+       Then
+	  }
+	 }
+	}
+   } 
+  }
+ }
+ 
+ Chapter Non-Goals {
+ @TODO
+ }
+}
