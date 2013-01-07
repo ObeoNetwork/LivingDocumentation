@@ -72,4 +72,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestGenerationNote" eSuperTypes="#//Note">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TestType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TestType">
+    <eLiterals name="unit"/>
+    <eLiterals name="plugin" value="1"/>
+    <eLiterals name="ui" value="2"/>
+  </eClassifiers>
 </ecore:EPackage>

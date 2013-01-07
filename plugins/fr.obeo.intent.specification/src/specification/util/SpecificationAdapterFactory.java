@@ -140,6 +140,10 @@ public class SpecificationAdapterFactory extends AdapterFactoryImpl {
 				return createParameterAdapter();
 			}
 			@Override
+			public Adapter caseTestGenerationNote(TestGenerationNote object) {
+				return createTestGenerationNoteAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -394,6 +398,20 @@ public class SpecificationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link specification.TestGenerationNote <em>Test Generation Note</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see specification.TestGenerationNote
+	 * @generated
+	 */
+	public Adapter createTestGenerationNoteAdapter() {
 		return null;
 	}
 

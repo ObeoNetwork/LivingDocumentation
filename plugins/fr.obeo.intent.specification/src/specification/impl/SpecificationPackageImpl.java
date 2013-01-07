@@ -8,6 +8,7 @@ package specification.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -31,7 +32,9 @@ import specification.Specification;
 import specification.SpecificationFactory;
 import specification.SpecificationPackage;
 import specification.Story;
+import specification.TestGenerationNote;
 import specification.TestNote;
+import specification.TestType;
 
 /**
  * <!-- begin-user-doc -->
@@ -158,6 +161,20 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 	 * @generated
 	 */
 	private EClass parameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testGenerationNoteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum testTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -603,6 +620,33 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTestGenerationNote() {
+		return testGenerationNoteEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestGenerationNote_Type() {
+		return (EAttribute)testGenerationNoteEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getTestType() {
+		return testTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SpecificationFactory getSpecificationFactory() {
 		return (SpecificationFactory)getEFactoryInstance();
 	}
@@ -684,6 +728,12 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__TYPE);
+
+		testGenerationNoteEClass = createEClass(TEST_GENERATION_NOTE);
+		createEAttribute(testGenerationNoteEClass, TEST_GENERATION_NOTE__TYPE);
+
+		// Create enums
+		testTypeEEnum = createEEnum(TEST_TYPE);
 	}
 
 	/**
@@ -728,6 +778,7 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		testNoteEClass.getESuperTypes().add(this.getNote());
 		scenarioElementEClass.getESuperTypes().add(this.getParameter());
 		parameterEClass.getESuperTypes().add(this.getNamedElement());
+		testGenerationNoteEClass.getESuperTypes().add(this.getNote());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -788,6 +839,15 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Type(), ecorePackage.getEString(), "type", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(testGenerationNoteEClass, TestGenerationNote.class, "TestGenerationNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestGenerationNote_Type(), this.getTestType(), "type", null, 0, 1, TestGenerationNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(testTypeEEnum, TestType.class, "TestType");
+		addEEnumLiteral(testTypeEEnum, TestType.UNIT);
+		addEEnumLiteral(testTypeEEnum, TestType.PLUGIN);
+		addEEnumLiteral(testTypeEEnum, TestType.UI);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -8,6 +8,7 @@ package specification;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -1014,6 +1015,54 @@ public interface SpecificationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link specification.impl.TestGenerationNoteImpl <em>Test Generation Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see specification.impl.TestGenerationNoteImpl
+	 * @see specification.impl.SpecificationPackageImpl#getTestGenerationNote()
+	 * @generated
+	 */
+	int TEST_GENERATION_NOTE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_GENERATION_NOTE__DESCRIPTION = NOTE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_GENERATION_NOTE__TYPE = NOTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Test Generation Note</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_GENERATION_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link specification.TestType <em>Test Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see specification.TestType
+	 * @see specification.impl.SpecificationPackageImpl#getTestType()
+	 * @generated
+	 */
+	int TEST_TYPE = 18;
+
+
+	/**
 	 * Returns the meta object for class '{@link specification.Specification <em>Specification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1459,6 +1508,37 @@ public interface SpecificationPackage extends EPackage {
 	EAttribute getParameter_Type();
 
 	/**
+	 * Returns the meta object for class '{@link specification.TestGenerationNote <em>Test Generation Note</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Generation Note</em>'.
+	 * @see specification.TestGenerationNote
+	 * @generated
+	 */
+	EClass getTestGenerationNote();
+
+	/**
+	 * Returns the meta object for the attribute '{@link specification.TestGenerationNote#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see specification.TestGenerationNote#getType()
+	 * @see #getTestGenerationNote()
+	 * @generated
+	 */
+	EAttribute getTestGenerationNote_Type();
+
+	/**
+	 * Returns the meta object for enum '{@link specification.TestType <em>Test Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Test Type</em>'.
+	 * @see specification.TestType
+	 * @generated
+	 */
+	EEnum getTestType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1849,6 +1929,34 @@ public interface SpecificationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER__TYPE = eINSTANCE.getParameter_Type();
+
+		/**
+		 * The meta object literal for the '{@link specification.impl.TestGenerationNoteImpl <em>Test Generation Note</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see specification.impl.TestGenerationNoteImpl
+		 * @see specification.impl.SpecificationPackageImpl#getTestGenerationNote()
+		 * @generated
+		 */
+		EClass TEST_GENERATION_NOTE = eINSTANCE.getTestGenerationNote();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_GENERATION_NOTE__TYPE = eINSTANCE.getTestGenerationNote_Type();
+
+		/**
+		 * The meta object literal for the '{@link specification.TestType <em>Test Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see specification.TestType
+		 * @see specification.impl.SpecificationPackageImpl#getTestType()
+		 * @generated
+		 */
+		EEnum TEST_TYPE = eINSTANCE.getTestType();
 
 	}
 
