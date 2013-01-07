@@ -18,5 +18,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Behaviour extends NamedElement {
+public interface Behaviour extends ScenarioElement {
 } // Behaviour

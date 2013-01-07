@@ -23,8 +23,10 @@ import specification.Feature;
 import specification.ImplementationNote;
 import specification.NamedElement;
 import specification.Note;
+import specification.Parameter;
 import specification.Role;
 import specification.Scenario;
+import specification.ScenarioElement;
 import specification.Specification;
 import specification.SpecificationFactory;
 import specification.SpecificationPackage;
@@ -142,6 +144,20 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 	 * @generated
 	 */
 	private EClass testNoteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scenarioElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parameterEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -551,6 +567,42 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getScenarioElement() {
+		return scenarioElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getScenarioElement_Parameters() {
+		return (EReference)scenarioElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParameter() {
+		return parameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameter_Type() {
+		return (EAttribute)parameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SpecificationFactory getSpecificationFactory() {
 		return (SpecificationFactory)getEFactoryInstance();
 	}
@@ -626,6 +678,12 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		implementationNoteEClass = createEClass(IMPLEMENTATION_NOTE);
 
 		testNoteEClass = createEClass(TEST_NOTE);
+
+		scenarioElementEClass = createEClass(SCENARIO_ELEMENT);
+		createEReference(scenarioElementEClass, SCENARIO_ELEMENT__PARAMETERS);
+
+		parameterEClass = createEClass(PARAMETER);
+		createEAttribute(parameterEClass, PARAMETER__TYPE);
 	}
 
 	/**
@@ -663,11 +721,13 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		benefitEClass.getESuperTypes().add(this.getNamedElement());
 		storyEClass.getESuperTypes().add(this.getNamedElement());
 		scenarioEClass.getESuperTypes().add(this.getNamedElement());
-		contextEClass.getESuperTypes().add(this.getNamedElement());
-		actionEClass.getESuperTypes().add(this.getNamedElement());
-		behaviourEClass.getESuperTypes().add(this.getNamedElement());
+		contextEClass.getESuperTypes().add(this.getScenarioElement());
+		actionEClass.getESuperTypes().add(this.getScenarioElement());
+		behaviourEClass.getESuperTypes().add(this.getScenarioElement());
 		implementationNoteEClass.getESuperTypes().add(this.getNote());
 		testNoteEClass.getESuperTypes().add(this.getNote());
+		scenarioElementEClass.getESuperTypes().add(this.getParameter());
+		parameterEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -722,6 +782,12 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		initEClass(implementationNoteEClass, ImplementationNote.class, "ImplementationNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(testNoteEClass, TestNote.class, "TestNote", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(scenarioElementEClass, ScenarioElement.class, "ScenarioElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScenarioElement_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, ScenarioElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParameter_Type(), ecorePackage.getEString(), "type", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

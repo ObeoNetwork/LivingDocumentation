@@ -22,7 +22,7 @@ import specification.SpecificationPackage;
  *
  * @generated
  */
-public class ActionImpl extends NamedElementImpl implements Action {
+public class ActionImpl extends ScenarioElementImpl implements Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

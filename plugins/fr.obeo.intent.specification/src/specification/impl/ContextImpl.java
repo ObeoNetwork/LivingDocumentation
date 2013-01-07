@@ -22,7 +22,7 @@ import specification.SpecificationPackage;
  *
  * @generated
  */
-public class ContextImpl extends NamedElementImpl implements Context {
+public class ContextImpl extends ScenarioElementImpl implements Context {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

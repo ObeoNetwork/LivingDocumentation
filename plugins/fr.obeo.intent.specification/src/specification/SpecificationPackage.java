@@ -582,42 +582,6 @@ public interface SpecificationPackage extends EPackage {
 	int CONTEXT = 7;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT__REFERENCES = NAMED_ELEMENT__REFERENCES;
-
-	/**
-	 * The number of structural features of the '<em>Context</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link specification.impl.ActionImpl <em>Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -626,42 +590,6 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 */
 	int ACTION = 8;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__REFERENCES = NAMED_ELEMENT__REFERENCES;
-
-	/**
-	 * The number of structural features of the '<em>Action</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link specification.impl.BehaviourImpl <em>Behaviour</em>}' class.
@@ -674,42 +602,6 @@ public interface SpecificationPackage extends EPackage {
 	int BEHAVIOUR = 9;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOUR__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOUR__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOUR__REFERENCES = NAMED_ELEMENT__REFERENCES;
-
-	/**
-	 * The number of structural features of the '<em>Behaviour</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOUR_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link specification.impl.AutomationLayerImpl <em>Automation Layer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -718,6 +610,317 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 */
 	int AUTOMATION_LAYER = 10;
+
+	/**
+	 * The meta object id for the '{@link specification.impl.NoteImpl <em>Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see specification.impl.NoteImpl
+	 * @see specification.impl.SpecificationPackageImpl#getNote()
+	 * @generated
+	 */
+	int NOTE = 12;
+
+	/**
+	 * The meta object id for the '{@link specification.impl.ImplementationNoteImpl <em>Implementation Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see specification.impl.ImplementationNoteImpl
+	 * @see specification.impl.SpecificationPackageImpl#getImplementationNote()
+	 * @generated
+	 */
+	int IMPLEMENTATION_NOTE = 13;
+
+	/**
+	 * The meta object id for the '{@link specification.impl.TestNoteImpl <em>Test Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see specification.impl.TestNoteImpl
+	 * @see specification.impl.SpecificationPackageImpl#getTestNote()
+	 * @generated
+	 */
+	int TEST_NOTE = 14;
+
+	/**
+	 * The meta object id for the '{@link specification.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see specification.impl.ParameterImpl
+	 * @see specification.impl.SpecificationPackageImpl#getParameter()
+	 * @generated
+	 */
+	int PARAMETER = 16;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NOTES = NAMED_ELEMENT__NOTES;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__REFERENCES = NAMED_ELEMENT__REFERENCES;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link specification.impl.ScenarioElementImpl <em>Scenario Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see specification.impl.ScenarioElementImpl
+	 * @see specification.impl.SpecificationPackageImpl#getScenarioElement()
+	 * @generated
+	 */
+	int SCENARIO_ELEMENT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_ELEMENT__NAME = PARAMETER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_ELEMENT__NOTES = PARAMETER__NOTES;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_ELEMENT__REFERENCES = PARAMETER__REFERENCES;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_ELEMENT__TYPE = PARAMETER__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_ELEMENT__PARAMETERS = PARAMETER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Scenario Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_ELEMENT_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__NAME = SCENARIO_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__NOTES = SCENARIO_ELEMENT__NOTES;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__REFERENCES = SCENARIO_ELEMENT__REFERENCES;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__TYPE = SCENARIO_ELEMENT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__PARAMETERS = SCENARIO_ELEMENT__PARAMETERS;
+
+	/**
+	 * The number of structural features of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_FEATURE_COUNT = SCENARIO_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__NAME = SCENARIO_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__NOTES = SCENARIO_ELEMENT__NOTES;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__REFERENCES = SCENARIO_ELEMENT__REFERENCES;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__TYPE = SCENARIO_ELEMENT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__PARAMETERS = SCENARIO_ELEMENT__PARAMETERS;
+
+	/**
+	 * The number of structural features of the '<em>Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_FEATURE_COUNT = SCENARIO_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOUR__NAME = SCENARIO_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOUR__NOTES = SCENARIO_ELEMENT__NOTES;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOUR__REFERENCES = SCENARIO_ELEMENT__REFERENCES;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOUR__TYPE = SCENARIO_ELEMENT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOUR__PARAMETERS = SCENARIO_ELEMENT__PARAMETERS;
+
+	/**
+	 * The number of structural features of the '<em>Behaviour</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOUR_FEATURE_COUNT = SCENARIO_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' containment reference list.
@@ -755,17 +958,6 @@ public interface SpecificationPackage extends EPackage {
 	 */
 	int AUTOMATION_LAYER_FEATURE_COUNT = 3;
 
-
-	/**
-	 * The meta object id for the '{@link specification.impl.NoteImpl <em>Note</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see specification.impl.NoteImpl
-	 * @see specification.impl.SpecificationPackageImpl#getNote()
-	 * @generated
-	 */
-	int NOTE = 12;
-
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -785,16 +977,6 @@ public interface SpecificationPackage extends EPackage {
 	int NOTE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link specification.impl.ImplementationNoteImpl <em>Implementation Note</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see specification.impl.ImplementationNoteImpl
-	 * @see specification.impl.SpecificationPackageImpl#getImplementationNote()
-	 * @generated
-	 */
-	int IMPLEMENTATION_NOTE = 13;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -811,16 +993,6 @@ public interface SpecificationPackage extends EPackage {
 	 * @ordered
 	 */
 	int IMPLEMENTATION_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link specification.impl.TestNoteImpl <em>Test Note</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see specification.impl.TestNoteImpl
-	 * @see specification.impl.SpecificationPackageImpl#getTestNote()
-	 * @generated
-	 */
-	int TEST_NOTE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1245,6 +1417,48 @@ public interface SpecificationPackage extends EPackage {
 	EClass getTestNote();
 
 	/**
+	 * Returns the meta object for class '{@link specification.ScenarioElement <em>Scenario Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Scenario Element</em>'.
+	 * @see specification.ScenarioElement
+	 * @generated
+	 */
+	EClass getScenarioElement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link specification.ScenarioElement#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Parameters</em>'.
+	 * @see specification.ScenarioElement#getParameters()
+	 * @see #getScenarioElement()
+	 * @generated
+	 */
+	EReference getScenarioElement_Parameters();
+
+	/**
+	 * Returns the meta object for class '{@link specification.Parameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter</em>'.
+	 * @see specification.Parameter
+	 * @generated
+	 */
+	EClass getParameter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link specification.Parameter#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see specification.Parameter#getType()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EAttribute getParameter_Type();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1599,6 +1813,42 @@ public interface SpecificationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TEST_NOTE = eINSTANCE.getTestNote();
+
+		/**
+		 * The meta object literal for the '{@link specification.impl.ScenarioElementImpl <em>Scenario Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see specification.impl.ScenarioElementImpl
+		 * @see specification.impl.SpecificationPackageImpl#getScenarioElement()
+		 * @generated
+		 */
+		EClass SCENARIO_ELEMENT = eINSTANCE.getScenarioElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENARIO_ELEMENT__PARAMETERS = eINSTANCE.getScenarioElement_Parameters();
+
+		/**
+		 * The meta object literal for the '{@link specification.impl.ParameterImpl <em>Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see specification.impl.ParameterImpl
+		 * @see specification.impl.SpecificationPackageImpl#getParameter()
+		 * @generated
+		 */
+		EClass PARAMETER = eINSTANCE.getParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 	}
 

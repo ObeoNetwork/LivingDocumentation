@@ -22,7 +22,7 @@ import specification.SpecificationPackage;
  *
  * @generated
  */
-public class BehaviourImpl extends NamedElementImpl implements Behaviour {
+public class BehaviourImpl extends ScenarioElementImpl implements Behaviour {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

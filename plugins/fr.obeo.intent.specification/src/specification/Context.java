@@ -18,5 +18,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Context extends NamedElement {
+public interface Context extends ScenarioElement {
 } // Context

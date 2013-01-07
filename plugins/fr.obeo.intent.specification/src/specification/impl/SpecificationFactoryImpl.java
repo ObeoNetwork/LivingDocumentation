@@ -73,6 +73,8 @@ public class SpecificationFactoryImpl extends EFactoryImpl implements Specificat
 			case SpecificationPackage.AUTOMATION_LAYER: return createAutomationLayer();
 			case SpecificationPackage.IMPLEMENTATION_NOTE: return createImplementationNote();
 			case SpecificationPackage.TEST_NOTE: return createTestNote();
+			case SpecificationPackage.SCENARIO_ELEMENT: return createScenarioElement();
+			case SpecificationPackage.PARAMETER: return createParameter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -206,6 +208,26 @@ public class SpecificationFactoryImpl extends EFactoryImpl implements Specificat
 	public TestNote createTestNote() {
 		TestNoteImpl testNote = new TestNoteImpl();
 		return testNote;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ScenarioElement createScenarioElement() {
+		ScenarioElementImpl scenarioElement = new ScenarioElementImpl();
+		return scenarioElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameter createParameter() {
+		ParameterImpl parameter = new ParameterImpl();
+		return parameter;
 	}
 
 	/**

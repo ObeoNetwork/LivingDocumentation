@@ -18,5 +18,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Action extends NamedElement {
+public interface Action extends ScenarioElement {
 } // Action
