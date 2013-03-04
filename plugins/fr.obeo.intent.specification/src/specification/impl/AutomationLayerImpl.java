@@ -8,6 +8,7 @@ package specification.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -36,6 +38,7 @@ import specification.SpecificationPackage;
  *   <li>{@link specification.impl.AutomationLayerImpl#getContext <em>Context</em>}</li>
  *   <li>{@link specification.impl.AutomationLayerImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link specification.impl.AutomationLayerImpl#getBehaviours <em>Behaviours</em>}</li>
+ *   <li>{@link specification.impl.AutomationLayerImpl#getBasePackage <em>Base Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,6 +74,26 @@ public class AutomationLayerImpl extends EObjectImpl implements AutomationLayer 
 	 * @ordered
 	 */
 	protected EList<Behaviour> behaviours;
+
+	/**
+	 * The default value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBasePackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BASE_PACKAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBasePackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String basePackage = BASE_PACKAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,6 +155,27 @@ public class AutomationLayerImpl extends EObjectImpl implements AutomationLayer 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBasePackage() {
+		return basePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBasePackage(String newBasePackage) {
+		String oldBasePackage = basePackage;
+		basePackage = newBasePackage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SpecificationPackage.AUTOMATION_LAYER__BASE_PACKAGE, oldBasePackage, basePackage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -159,6 +203,8 @@ public class AutomationLayerImpl extends EObjectImpl implements AutomationLayer 
 				return getActions();
 			case SpecificationPackage.AUTOMATION_LAYER__BEHAVIOURS:
 				return getBehaviours();
+			case SpecificationPackage.AUTOMATION_LAYER__BASE_PACKAGE:
+				return getBasePackage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,6 +230,9 @@ public class AutomationLayerImpl extends EObjectImpl implements AutomationLayer 
 				getBehaviours().clear();
 				getBehaviours().addAll((Collection<? extends Behaviour>)newValue);
 				return;
+			case SpecificationPackage.AUTOMATION_LAYER__BASE_PACKAGE:
+				setBasePackage((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -205,6 +254,9 @@ public class AutomationLayerImpl extends EObjectImpl implements AutomationLayer 
 			case SpecificationPackage.AUTOMATION_LAYER__BEHAVIOURS:
 				getBehaviours().clear();
 				return;
+			case SpecificationPackage.AUTOMATION_LAYER__BASE_PACKAGE:
+				setBasePackage(BASE_PACKAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -223,8 +275,26 @@ public class AutomationLayerImpl extends EObjectImpl implements AutomationLayer 
 				return actions != null && !actions.isEmpty();
 			case SpecificationPackage.AUTOMATION_LAYER__BEHAVIOURS:
 				return behaviours != null && !behaviours.isEmpty();
+			case SpecificationPackage.AUTOMATION_LAYER__BASE_PACKAGE:
+				return BASE_PACKAGE_EDEFAULT == null ? basePackage != null : !BASE_PACKAGE_EDEFAULT.equals(basePackage);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (basePackage: ");
+		result.append(basePackage);
+		result.append(')');
+		return result.toString();
 	}
 
 } //AutomationLayerImpl

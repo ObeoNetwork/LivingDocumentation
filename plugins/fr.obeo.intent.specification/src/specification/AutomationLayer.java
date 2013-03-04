@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link specification.AutomationLayer#getContext <em>Context</em>}</li>
  *   <li>{@link specification.AutomationLayer#getActions <em>Actions</em>}</li>
  *   <li>{@link specification.AutomationLayer#getBehaviours <em>Behaviours</em>}</li>
+ *   <li>{@link specification.AutomationLayer#getBasePackage <em>Base Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface AutomationLayer extends EObject {
 	 * @generated
 	 */
 	EList<Behaviour> getBehaviours();
+
+	/**
+	 * Returns the value of the '<em><b>Base Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Base Package</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Base Package</em>' attribute.
+	 * @see #setBasePackage(String)
+	 * @see specification.SpecificationPackage#getAutomationLayer_BasePackage()
+	 * @model
+	 * @generated
+	 */
+	String getBasePackage();
+
+	/**
+	 * Sets the value of the '{@link specification.AutomationLayer#getBasePackage <em>Base Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Base Package</em>' attribute.
+	 * @see #getBasePackage()
+	 * @generated
+	 */
+	void setBasePackage(String value);
 
 } // AutomationLayer

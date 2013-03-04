@@ -32,7 +32,7 @@ public class SpecificationFactoryImpl extends EFactoryImpl implements Specificat
 	 */
 	public static SpecificationFactory init() {
 		try {
-			SpecificationFactory theSpecificationFactory = (SpecificationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/intent/specification"); 
+			SpecificationFactory theSpecificationFactory = (SpecificationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/intent/specification/1.0"); 
 			if (theSpecificationFactory != null) {
 				return theSpecificationFactory;
 			}

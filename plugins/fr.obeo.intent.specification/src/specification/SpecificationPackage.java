@@ -42,7 +42,7 @@ public interface SpecificationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/intent/specification";
+	String eNS_URI = "http://www.eclipse.org/intent/specification/1.0";
 
 	/**
 	 * The package namespace name.
@@ -951,13 +951,22 @@ public interface SpecificationPackage extends EPackage {
 	int AUTOMATION_LAYER__BEHAVIOURS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Base Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTOMATION_LAYER__BASE_PACKAGE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Automation Layer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUTOMATION_LAYER_FEATURE_COUNT = 3;
+	int AUTOMATION_LAYER_FEATURE_COUNT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1380,6 +1389,17 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAutomationLayer_Behaviours();
+
+	/**
+	 * Returns the meta object for the attribute '{@link specification.AutomationLayer#getBasePackage <em>Base Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Base Package</em>'.
+	 * @see specification.AutomationLayer#getBasePackage()
+	 * @see #getAutomationLayer()
+	 * @generated
+	 */
+	EAttribute getAutomationLayer_BasePackage();
 
 	/**
 	 * Returns the meta object for class '{@link specification.NamedElement <em>Named Element</em>}'.
@@ -1821,6 +1841,14 @@ public interface SpecificationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference AUTOMATION_LAYER__BEHAVIOURS = eINSTANCE.getAutomationLayer_Behaviours();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Package</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AUTOMATION_LAYER__BASE_PACKAGE = eINSTANCE.getAutomationLayer_BasePackage();
 
 		/**
 		 * The meta object literal for the '{@link specification.impl.NamedElementImpl <em>Named Element</em>}' class.
