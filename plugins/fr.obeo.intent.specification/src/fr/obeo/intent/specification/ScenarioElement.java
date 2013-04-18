@@ -4,6 +4,7 @@ package fr.obeo.intent.specification;
 
 import org.eclipse.emf.common.util.EList;
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Scenario Element</b></em>'.
@@ -17,24 +18,24 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see fr.obeo.intent.specification.SpecificationPackage#getScenarioElement()
- * @model
+ * @model abstract="true"
  * @generated
  */
-public interface ScenarioElement extends Parameter {
+public interface ScenarioElement extends NamedElement {
+
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' reference list.
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.obeo.intent.specification.Parameter}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' reference list.
+	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getScenarioElement_Parameters()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Parameter> getParameters();
-
 } // ScenarioElement

@@ -64,7 +64,6 @@ public class NamedElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addReferencesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,28 +86,6 @@ public class NamedElementItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the References feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReferencesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NamedElement_references_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_references_feature", "_UI_NamedElement_type"),
-				 SpecificationPackage.Literals.NAMED_ELEMENT__REFERENCES,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

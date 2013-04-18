@@ -119,7 +119,6 @@ public class SpecificationSwitch<T> extends Switch<T> {
 				Context context = (Context)theEObject;
 				T result = caseContext(context);
 				if (result == null) result = caseScenarioElement(context);
-				if (result == null) result = caseParameter(context);
 				if (result == null) result = caseNamedElement(context);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -128,7 +127,6 @@ public class SpecificationSwitch<T> extends Switch<T> {
 				Action action = (Action)theEObject;
 				T result = caseAction(action);
 				if (result == null) result = caseScenarioElement(action);
-				if (result == null) result = caseParameter(action);
 				if (result == null) result = caseNamedElement(action);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -137,7 +135,6 @@ public class SpecificationSwitch<T> extends Switch<T> {
 				Behaviour behaviour = (Behaviour)theEObject;
 				T result = caseBehaviour(behaviour);
 				if (result == null) result = caseScenarioElement(behaviour);
-				if (result == null) result = caseParameter(behaviour);
 				if (result == null) result = caseNamedElement(behaviour);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -177,15 +174,7 @@ public class SpecificationSwitch<T> extends Switch<T> {
 			case SpecificationPackage.SCENARIO_ELEMENT: {
 				ScenarioElement scenarioElement = (ScenarioElement)theEObject;
 				T result = caseScenarioElement(scenarioElement);
-				if (result == null) result = caseParameter(scenarioElement);
 				if (result == null) result = caseNamedElement(scenarioElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case SpecificationPackage.PARAMETER: {
-				Parameter parameter = (Parameter)theEObject;
-				T result = caseParameter(parameter);
-				if (result == null) result = caseNamedElement(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -193,6 +182,19 @@ public class SpecificationSwitch<T> extends Switch<T> {
 				TestGenerationNote testGenerationNote = (TestGenerationNote)theEObject;
 				T result = caseTestGenerationNote(testGenerationNote);
 				if (result == null) result = caseNote(testGenerationNote);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SpecificationPackage.VALUE: {
+				Value value = (Value)theEObject;
+				T result = caseValue(value);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SpecificationPackage.PARAMETER: {
+				Parameter parameter = (Parameter)theEObject;
+				T result = caseParameter(parameter);
+				if (result == null) result = caseNamedElement(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -441,21 +443,6 @@ public class SpecificationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseParameter(Parameter object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Test Generation Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -467,6 +454,36 @@ public class SpecificationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTestGenerationNote(TestGenerationNote object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValue(Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameter(Parameter object) {
 		return null;
 	}
 

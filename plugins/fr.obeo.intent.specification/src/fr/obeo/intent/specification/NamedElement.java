@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.obeo.intent.specification.NamedElement#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.NamedElement#getNotes <em>Notes</em>}</li>
- *   <li>{@link fr.obeo.intent.specification.NamedElement#getReferences <em>References</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,21 +65,5 @@ public interface NamedElement extends EObject {
 	 * @generated
 	 */
 	EList<Note> getNotes();
-
-	/**
-	 * Returns the value of the '<em><b>References</b></em>' reference list.
-	 * The list contents are of type {@link fr.obeo.intent.specification.NamedElement}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>References</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>References</em>' reference list.
-	 * @see fr.obeo.intent.specification.SpecificationPackage#getNamedElement_References()
-	 * @model
-	 * @generated
-	 */
-	EList<NamedElement> getReferences();
 
 } // NamedElement

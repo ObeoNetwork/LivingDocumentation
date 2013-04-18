@@ -16,7 +16,6 @@ public abstract class Context implements IContext, TestRule {
 
 	public abstract void tearDown();
 
-	@Override
 	public Statement apply(Statement base, Description description) {
 		return new ContextStatement(base, this);
 	}

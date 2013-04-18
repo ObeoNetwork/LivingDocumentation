@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.intent.specification.Scenario#getGiven <em>Given</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.Scenario#getWhen <em>When</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.Scenario#getThen <em>Then</em>}</li>
+ *   <li>{@link fr.obeo.intent.specification.Scenario#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,5 +71,21 @@ public interface Scenario extends NamedElement {
 	 * @generated
 	 */
 	EList<Behaviour> getThen();
+
+	/**
+	 * Returns the value of the '<em><b>Values</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.obeo.intent.specification.Value}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Values</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Values</em>' containment reference list.
+	 * @see fr.obeo.intent.specification.SpecificationPackage#getScenario_Values()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Value> getValues();
 
 } // Scenario

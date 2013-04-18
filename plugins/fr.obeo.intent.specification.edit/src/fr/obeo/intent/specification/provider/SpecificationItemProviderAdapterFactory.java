@@ -371,26 +371,49 @@ public class SpecificationItemProviderAdapterFactory extends SpecificationAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.obeo.intent.specification.ScenarioElement} instances.
+	 * This keeps track of the one adapter used for all {@link fr.obeo.intent.specification.TestGenerationNote} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ScenarioElementItemProvider scenarioElementItemProvider;
+	protected TestGenerationNoteItemProvider testGenerationNoteItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.obeo.intent.specification.ScenarioElement}.
+	 * This creates an adapter for a {@link fr.obeo.intent.specification.TestGenerationNote}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createScenarioElementAdapter() {
-		if (scenarioElementItemProvider == null) {
-			scenarioElementItemProvider = new ScenarioElementItemProvider(this);
+	public Adapter createTestGenerationNoteAdapter() {
+		if (testGenerationNoteItemProvider == null) {
+			testGenerationNoteItemProvider = new TestGenerationNoteItemProvider(this);
 		}
 
-		return scenarioElementItemProvider;
+		return testGenerationNoteItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.obeo.intent.specification.Value} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ValueItemProvider valueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.obeo.intent.specification.Value}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createValueAdapter() {
+		if (valueItemProvider == null) {
+			valueItemProvider = new ValueItemProvider(this);
+		}
+
+		return valueItemProvider;
 	}
 
 	/**
@@ -414,29 +437,6 @@ public class SpecificationItemProviderAdapterFactory extends SpecificationAdapte
 		}
 
 		return parameterItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link fr.obeo.intent.specification.TestGenerationNote} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TestGenerationNoteItemProvider testGenerationNoteItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.obeo.intent.specification.TestGenerationNote}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTestGenerationNoteAdapter() {
-		if (testGenerationNoteItemProvider == null) {
-			testGenerationNoteItemProvider = new TestGenerationNoteItemProvider(this);
-		}
-
-		return testGenerationNoteItemProvider;
 	}
 
 	/**
@@ -551,9 +551,9 @@ public class SpecificationItemProviderAdapterFactory extends SpecificationAdapte
 		if (automationLayerItemProvider != null) automationLayerItemProvider.dispose();
 		if (implementationNoteItemProvider != null) implementationNoteItemProvider.dispose();
 		if (testNoteItemProvider != null) testNoteItemProvider.dispose();
-		if (scenarioElementItemProvider != null) scenarioElementItemProvider.dispose();
-		if (parameterItemProvider != null) parameterItemProvider.dispose();
 		if (testGenerationNoteItemProvider != null) testGenerationNoteItemProvider.dispose();
+		if (valueItemProvider != null) valueItemProvider.dispose();
+		if (parameterItemProvider != null) parameterItemProvider.dispose();
 	}
 
 }

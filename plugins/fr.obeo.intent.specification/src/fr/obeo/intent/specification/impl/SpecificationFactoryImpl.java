@@ -70,9 +70,9 @@ public class SpecificationFactoryImpl extends EFactoryImpl implements Specificat
 			case SpecificationPackage.AUTOMATION_LAYER: return createAutomationLayer();
 			case SpecificationPackage.IMPLEMENTATION_NOTE: return createImplementationNote();
 			case SpecificationPackage.TEST_NOTE: return createTestNote();
-			case SpecificationPackage.SCENARIO_ELEMENT: return createScenarioElement();
-			case SpecificationPackage.PARAMETER: return createParameter();
 			case SpecificationPackage.TEST_GENERATION_NOTE: return createTestGenerationNote();
+			case SpecificationPackage.VALUE: return createValue();
+			case SpecificationPackage.PARAMETER: return createParameter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -243,9 +243,19 @@ public class SpecificationFactoryImpl extends EFactoryImpl implements Specificat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ScenarioElement createScenarioElement() {
-		ScenarioElementImpl scenarioElement = new ScenarioElementImpl();
-		return scenarioElement;
+	public TestGenerationNote createTestGenerationNote() {
+		TestGenerationNoteImpl testGenerationNote = new TestGenerationNoteImpl();
+		return testGenerationNote;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Value createValue() {
+		ValueImpl value = new ValueImpl();
+		return value;
 	}
 
 	/**
@@ -256,16 +266,6 @@ public class SpecificationFactoryImpl extends EFactoryImpl implements Specificat
 	public Parameter createParameter() {
 		ParameterImpl parameter = new ParameterImpl();
 		return parameter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TestGenerationNote createTestGenerationNote() {
-		TestGenerationNoteImpl testGenerationNote = new TestGenerationNoteImpl();
-		return testGenerationNote;
 	}
 
 	/**

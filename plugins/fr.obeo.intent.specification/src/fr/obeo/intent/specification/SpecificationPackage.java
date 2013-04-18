@@ -85,22 +85,13 @@ public interface SpecificationPackage extends EPackage {
 	int NAMED_ELEMENT__NOTES = 1;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__REFERENCES = 2;
-
-	/**
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 3;
+	int NAMED_ELEMENT_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.SpecificationImpl <em>Specification</em>}' class.
@@ -129,15 +120,6 @@ public interface SpecificationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPECIFICATION__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIFICATION__REFERENCES = NAMED_ELEMENT__REFERENCES;
 
 	/**
 	 * The feature id for the '<em><b>Features</b></em>' containment reference list.
@@ -202,15 +184,6 @@ public interface SpecificationPackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__REFERENCES = NAMED_ELEMENT__REFERENCES;
 
 	/**
 	 * The feature id for the '<em><b>Stories</b></em>' containment reference list.
@@ -286,15 +259,6 @@ public interface SpecificationPackage extends EPackage {
 	int ROLE__NOTES = NAMED_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__REFERENCES = NAMED_ELEMENT__REFERENCES;
-
-	/**
 	 * The number of structural features of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -330,15 +294,6 @@ public interface SpecificationPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__REFERENCES = NAMED_ELEMENT__REFERENCES;
 
 	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
@@ -378,15 +333,6 @@ public interface SpecificationPackage extends EPackage {
 	int BENEFIT__NOTES = NAMED_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BENEFIT__REFERENCES = NAMED_ELEMENT__REFERENCES;
-
-	/**
 	 * The number of structural features of the '<em>Benefit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,15 +368,6 @@ public interface SpecificationPackage extends EPackage {
 	 * @ordered
 	 */
 	int STORY__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORY__REFERENCES = NAMED_ELEMENT__REFERENCES;
 
 	/**
 	 * The feature id for the '<em><b>As</b></em>' reference.
@@ -506,15 +443,6 @@ public interface SpecificationPackage extends EPackage {
 	int SCENARIO__NOTES = NAMED_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__REFERENCES = NAMED_ELEMENT__REFERENCES;
-
-	/**
 	 * The feature id for the '<em><b>Given</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -542,68 +470,22 @@ public interface SpecificationPackage extends EPackage {
 	int SCENARIO__THEN = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__VALUES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.ParameterImpl <em>Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.obeo.intent.specification.impl.ParameterImpl
-	 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getParameter()
-	 * @generated
-	 */
-	int PARAMETER = 16;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__NOTES = NAMED_ELEMENT__NOTES;
-
-	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__REFERENCES = NAMED_ELEMENT__REFERENCES;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int SCENARIO_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.ScenarioElementImpl <em>Scenario Element</em>}' class.
@@ -622,7 +504,7 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_ELEMENT__NAME = PARAMETER__NAME;
+	int SCENARIO_ELEMENT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
@@ -631,34 +513,16 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_ELEMENT__NOTES = PARAMETER__NOTES;
+	int SCENARIO_ELEMENT__NOTES = NAMED_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_ELEMENT__REFERENCES = PARAMETER__REFERENCES;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO_ELEMENT__TYPE = PARAMETER__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO_ELEMENT__PARAMETERS = PARAMETER_FEATURE_COUNT + 0;
+	int SCENARIO_ELEMENT__PARAMETERS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Scenario Element</em>' class.
@@ -667,7 +531,7 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_ELEMENT_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 1;
+	int SCENARIO_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.ContextImpl <em>Context</em>}' class.
@@ -698,25 +562,7 @@ public interface SpecificationPackage extends EPackage {
 	int CONTEXT__NOTES = SCENARIO_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT__REFERENCES = SCENARIO_ELEMENT__REFERENCES;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTEXT__TYPE = SCENARIO_ELEMENT__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -771,25 +617,7 @@ public interface SpecificationPackage extends EPackage {
 	int ACTION__NOTES = SCENARIO_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__REFERENCES = SCENARIO_ELEMENT__REFERENCES;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION__TYPE = SCENARIO_ELEMENT__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -835,25 +663,7 @@ public interface SpecificationPackage extends EPackage {
 	int BEHAVIOUR__NOTES = SCENARIO_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>References</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOUR__REFERENCES = SCENARIO_ELEMENT__REFERENCES;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOUR__TYPE = SCENARIO_ELEMENT__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1017,7 +827,7 @@ public interface SpecificationPackage extends EPackage {
 	 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getTestGenerationNote()
 	 * @generated
 	 */
-	int TEST_GENERATION_NOTE = 17;
+	int TEST_GENERATION_NOTE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1047,6 +857,80 @@ public interface SpecificationPackage extends EPackage {
 	int TEST_GENERATION_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.ValueImpl <em>Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.obeo.intent.specification.impl.ValueImpl
+	 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getValue()
+	 * @generated
+	 */
+	int VALUE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__PARAMETER = 1;
+
+	/**
+	 * The number of structural features of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.obeo.intent.specification.impl.ParameterImpl
+	 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getParameter()
+	 * @generated
+	 */
+	int PARAMETER = 18;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NOTES = NAMED_ELEMENT__NOTES;
+
+	/**
+	 * The number of structural features of the '<em>Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link fr.obeo.intent.specification.TestType <em>Test Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1054,7 +938,7 @@ public interface SpecificationPackage extends EPackage {
 	 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getTestType()
 	 * @generated
 	 */
-	int TEST_TYPE = 18;
+	int TEST_TYPE = 19;
 
 
 	/**
@@ -1282,6 +1166,17 @@ public interface SpecificationPackage extends EPackage {
 	EReference getScenario_Then();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Scenario#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Values</em>'.
+	 * @see fr.obeo.intent.specification.Scenario#getValues()
+	 * @see #getScenario()
+	 * @generated
+	 */
+	EReference getScenario_Values();
+
+	/**
 	 * Returns the meta object for class '{@link fr.obeo.intent.specification.Context <em>Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1409,17 +1304,6 @@ public interface SpecificationPackage extends EPackage {
 	EReference getNamedElement_Notes();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.obeo.intent.specification.NamedElement#getReferences <em>References</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>References</em>'.
-	 * @see fr.obeo.intent.specification.NamedElement#getReferences()
-	 * @see #getNamedElement()
-	 * @generated
-	 */
-	EReference getNamedElement_References();
-
-	/**
 	 * Returns the meta object for class '{@link fr.obeo.intent.specification.Note <em>Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1471,36 +1355,15 @@ public interface SpecificationPackage extends EPackage {
 	EClass getScenarioElement();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.obeo.intent.specification.ScenarioElement#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.ScenarioElement#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Parameters</em>'.
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
 	 * @see fr.obeo.intent.specification.ScenarioElement#getParameters()
 	 * @see #getScenarioElement()
 	 * @generated
 	 */
 	EReference getScenarioElement_Parameters();
-
-	/**
-	 * Returns the meta object for class '{@link fr.obeo.intent.specification.Parameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parameter</em>'.
-	 * @see fr.obeo.intent.specification.Parameter
-	 * @generated
-	 */
-	EClass getParameter();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.obeo.intent.specification.Parameter#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see fr.obeo.intent.specification.Parameter#getType()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_Type();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.intent.specification.TestGenerationNote <em>Test Generation Note</em>}'.
@@ -1522,6 +1385,48 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTestGenerationNote_Type();
+
+	/**
+	 * Returns the meta object for class '{@link fr.obeo.intent.specification.Value <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value</em>'.
+	 * @see fr.obeo.intent.specification.Value
+	 * @generated
+	 */
+	EClass getValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.obeo.intent.specification.Value#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see fr.obeo.intent.specification.Value#getValue()
+	 * @see #getValue()
+	 * @generated
+	 */
+	EAttribute getValue_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.obeo.intent.specification.Value#getParameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parameter</em>'.
+	 * @see fr.obeo.intent.specification.Value#getParameter()
+	 * @see #getValue()
+	 * @generated
+	 */
+	EReference getValue_Parameter();
+
+	/**
+	 * Returns the meta object for class '{@link fr.obeo.intent.specification.Parameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter</em>'.
+	 * @see fr.obeo.intent.specification.Parameter
+	 * @generated
+	 */
+	EClass getParameter();
 
 	/**
 	 * Returns the meta object for enum '{@link fr.obeo.intent.specification.TestType <em>Test Type</em>}'.
@@ -1738,6 +1643,14 @@ public interface SpecificationPackage extends EPackage {
 		EReference SCENARIO__THEN = eINSTANCE.getScenario_Then();
 
 		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENARIO__VALUES = eINSTANCE.getScenario_Values();
+
+		/**
 		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.ContextImpl <em>Context</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1844,14 +1757,6 @@ public interface SpecificationPackage extends EPackage {
 		EReference NAMED_ELEMENT__NOTES = eINSTANCE.getNamedElement_Notes();
 
 		/**
-		 * The meta object literal for the '<em><b>References</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NAMED_ELEMENT__REFERENCES = eINSTANCE.getNamedElement_References();
-
-		/**
 		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.NoteImpl <em>Note</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1900,30 +1805,12 @@ public interface SpecificationPackage extends EPackage {
 		EClass SCENARIO_ELEMENT = eINSTANCE.getScenarioElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference SCENARIO_ELEMENT__PARAMETERS = eINSTANCE.getScenarioElement_Parameters();
-
-		/**
-		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.ParameterImpl <em>Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.obeo.intent.specification.impl.ParameterImpl
-		 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getParameter()
-		 * @generated
-		 */
-		EClass PARAMETER = eINSTANCE.getParameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.TestGenerationNoteImpl <em>Test Generation Note</em>}' class.
@@ -1942,6 +1829,42 @@ public interface SpecificationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TEST_GENERATION_NOTE__TYPE = eINSTANCE.getTestGenerationNote_Type();
+
+		/**
+		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.ValueImpl <em>Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.obeo.intent.specification.impl.ValueImpl
+		 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getValue()
+		 * @generated
+		 */
+		EClass VALUE = eINSTANCE.getValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VALUE__VALUE = eINSTANCE.getValue_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE__PARAMETER = eINSTANCE.getValue_Parameter();
+
+		/**
+		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.ParameterImpl <em>Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.obeo.intent.specification.impl.ParameterImpl
+		 * @see fr.obeo.intent.specification.impl.SpecificationPackageImpl#getParameter()
+		 * @generated
+		 */
+		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.intent.specification.TestType <em>Test Type</em>}' enum.

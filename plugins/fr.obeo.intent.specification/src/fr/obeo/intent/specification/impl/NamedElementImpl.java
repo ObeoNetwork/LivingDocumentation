@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -32,7 +31,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.obeo.intent.specification.impl.NamedElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.impl.NamedElementImpl#getNotes <em>Notes</em>}</li>
- *   <li>{@link fr.obeo.intent.specification.impl.NamedElementImpl#getReferences <em>References</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,16 +66,6 @@ public abstract class NamedElementImpl extends EObjectImpl implements NamedEleme
 	 * @ordered
 	 */
 	protected EList<Note> notes;
-
-	/**
-	 * The cached value of the '{@link #getReferences() <em>References</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReferences()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<NamedElement> references;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,18 +124,6 @@ public abstract class NamedElementImpl extends EObjectImpl implements NamedEleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<NamedElement> getReferences() {
-		if (references == null) {
-			references = new EObjectResolvingEList<NamedElement>(NamedElement.class, this, SpecificationPackage.NAMED_ELEMENT__REFERENCES);
-		}
-		return references;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -169,8 +145,6 @@ public abstract class NamedElementImpl extends EObjectImpl implements NamedEleme
 				return getName();
 			case SpecificationPackage.NAMED_ELEMENT__NOTES:
 				return getNotes();
-			case SpecificationPackage.NAMED_ELEMENT__REFERENCES:
-				return getReferences();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,10 +165,6 @@ public abstract class NamedElementImpl extends EObjectImpl implements NamedEleme
 				getNotes().clear();
 				getNotes().addAll((Collection<? extends Note>)newValue);
 				return;
-			case SpecificationPackage.NAMED_ELEMENT__REFERENCES:
-				getReferences().clear();
-				getReferences().addAll((Collection<? extends NamedElement>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -213,9 +183,6 @@ public abstract class NamedElementImpl extends EObjectImpl implements NamedEleme
 			case SpecificationPackage.NAMED_ELEMENT__NOTES:
 				getNotes().clear();
 				return;
-			case SpecificationPackage.NAMED_ELEMENT__REFERENCES:
-				getReferences().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,8 +199,6 @@ public abstract class NamedElementImpl extends EObjectImpl implements NamedEleme
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case SpecificationPackage.NAMED_ELEMENT__NOTES:
 				return notes != null && !notes.isEmpty();
-			case SpecificationPackage.NAMED_ELEMENT__REFERENCES:
-				return references != null && !references.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -54,12 +54,12 @@ public class [contxt.name/] extends [getContextInheritance()/] {
 [/for]
 [for (behaviour : Behaviour | getScenarios()._then->asSet())]
 	/**
-	 * Behaviour : [behaviour.name/]
+	 * Behavior : [behaviour.name/]
 	 */
 	public void assert[behaviour.name/]() {
 		// [protected (behaviour.name)]
-		// TODO Implement behaviour [behaviour.name/]
-		fail("Behaviour [behaviour.name/] not implemented");
+		// TODO Implement behavior [behaviour.name/]
+		fail("Behavior [behaviour.name/] not implemented");
 		// [/protected]
 	}
 [/for]

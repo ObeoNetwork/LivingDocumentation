@@ -8,13 +8,18 @@ import fr.obeo.intent.specification.Context;
 import fr.obeo.intent.specification.Scenario;
 import fr.obeo.intent.specification.SpecificationPackage;
 
+import fr.obeo.intent.specification.Value;
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link fr.obeo.intent.specification.impl.ScenarioImpl#getGiven <em>Given</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.impl.ScenarioImpl#getWhen <em>When</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.impl.ScenarioImpl#getThen <em>Then</em>}</li>
+ *   <li>{@link fr.obeo.intent.specification.impl.ScenarioImpl#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,6 +67,16 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @ordered
 	 */
 	protected EList<Behaviour> then;
+
+	/**
+	 * The cached value of the '{@link #getValues() <em>Values</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValues()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Value> values;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,6 +138,32 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Value> getValues() {
+		if (values == null) {
+			values = new EObjectContainmentEList<Value>(Value.class, this, SpecificationPackage.SCENARIO__VALUES);
+		}
+		return values;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SpecificationPackage.SCENARIO__VALUES:
+				return ((InternalEList<?>)getValues()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -131,6 +173,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				return getWhen();
 			case SpecificationPackage.SCENARIO__THEN:
 				return getThen();
+			case SpecificationPackage.SCENARIO__VALUES:
+				return getValues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -156,6 +200,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				getThen().clear();
 				getThen().addAll((Collection<? extends Behaviour>)newValue);
 				return;
+			case SpecificationPackage.SCENARIO__VALUES:
+				getValues().clear();
+				getValues().addAll((Collection<? extends Value>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -177,6 +225,9 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 			case SpecificationPackage.SCENARIO__THEN:
 				getThen().clear();
 				return;
+			case SpecificationPackage.SCENARIO__VALUES:
+				getValues().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -195,6 +246,8 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				return when != null && !when.isEmpty();
 			case SpecificationPackage.SCENARIO__THEN:
 				return then != null && !then.isEmpty();
+			case SpecificationPackage.SCENARIO__VALUES:
+				return values != null && !values.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

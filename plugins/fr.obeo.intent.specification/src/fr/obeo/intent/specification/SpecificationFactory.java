@@ -139,13 +139,22 @@ public interface SpecificationFactory extends EFactory {
 	TestNote createTestNote();
 
 	/**
-	 * Returns a new object of class '<em>Scenario Element</em>'.
+	 * Returns a new object of class '<em>Test Generation Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scenario Element</em>'.
+	 * @return a new object of class '<em>Test Generation Note</em>'.
 	 * @generated
 	 */
-	ScenarioElement createScenarioElement();
+	TestGenerationNote createTestGenerationNote();
+
+	/**
+	 * Returns a new object of class '<em>Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Value</em>'.
+	 * @generated
+	 */
+	Value createValue();
 
 	/**
 	 * Returns a new object of class '<em>Parameter</em>'.
@@ -155,15 +164,6 @@ public interface SpecificationFactory extends EFactory {
 	 * @generated
 	 */
 	Parameter createParameter();
-
-	/**
-	 * Returns a new object of class '<em>Test Generation Note</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Test Generation Note</em>'.
-	 * @generated
-	 */
-	TestGenerationNote createTestGenerationNote();
 
 	/**
 	 * Returns the package supported by this factory.
