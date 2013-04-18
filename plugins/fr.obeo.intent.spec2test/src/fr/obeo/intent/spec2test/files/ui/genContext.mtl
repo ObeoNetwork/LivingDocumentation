@@ -1,0 +1,82 @@
+[comment encoding = UTF-8 /]
+[module genContext('http://www.eclipse.org/intent/specification/1.0')]
+[import fr::obeo::intent::spec2test::files::genAutomationUtils /]
+
+[template public genContext(contxt : Context)]
+[file (getContextsPath(contxt.eContainer(Specification))+'/'+contxt.name+'.java', false, 'UTF-8')]
+[genLicence()/]
+package [getContextsPackage(contxt.eContainer(Specification))/];
+
+import static org.junit.Assert.*;
+[if (contxt.eContainer(Context)->size()>0)]
+	import [getContextsPackage(contxt.eContainer(Specification))/].[getContextInheritance()/];
+[else]
+	import [getAutomationPackage(contxt.eContainer(Specification))/].Context;
+[/if]
+
+// [protected (contxt.name+' imports')]
+// TODO Define imports
+// [/protected]
+
+/**
+ * Context : [contxt.name/]
+ */
+public class [contxt.name/] extends [getContextInheritance()/] {
+// [protected (contxt.name+' variables')]
+// TODO Define private variables
+// [/protected]
+
+	@Override
+	public void setup() {
+		// [protected (contxt.name+' setup')]
+		// TODO Implement context setup
+		// [/protected]
+	}
+
+	@Override
+	public void tearDown() {
+		// [protected (contxt.name+' tear down')]
+		// TODO Implement context tear down
+		// [/protected]
+	}
+[if (getScenarios()->size()>0)]
+	[for (action : Action | getScenarios().when->asSet())]
+	/**
+	 * Action : [action.name/]
+	 */
+	public void action[action.name/]() {
+		// [protected (action.name)]
+		// TODO Implement action [action.name/]
+		fail("Action [action.name/] not implemented");
+		// [/protected]
+	}
+
+[/for]
+[for (behaviour : Behaviour | getScenarios()._then->asSet())]
+	/**
+	 * Behaviour : [behaviour.name/]
+	 */
+	public void assert[behaviour.name/]() {
+		// [protected (behaviour.name)]
+		// TODO Implement behaviour [behaviour.name/]
+		fail("Behaviour [behaviour.name/] not implemented");
+		// [/protected]
+	}
+[/for]
+[/if]
+
+// [protected (contxt.name+' private methods')]
+// TODO Define private methods
+// [/protected]
+}
+[/file]
+[for (subContext : Context | contxt.contexts)]
+	[genContext(subContext)/]
+[/for]
+[/template]
+
+
+
+[query public getContextInheritance(contxt : Context) : String = if contxt.eContainer(Context)->size()>0 then contxt.eContainer(Context).name else 'Context' endif /]
+
+[query public getScenarios (contxt : Context) : OrderedSet(Scenario) = contxt.eInverse(Scenario)/]
