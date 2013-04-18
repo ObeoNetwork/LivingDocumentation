@@ -12,9 +12,9 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="specification.presentation.SpecificationModelWizardID"
+            id="fr.obeo.intent.specification.presentation.SpecificationModelWizardID"
             name="%_UI_SpecificationModelWizard_label"
-            class="specification.presentation.SpecificationModelWizard"
+            class="fr.obeo.intent.specification.presentation.SpecificationModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/SpecificationModelFile.gif">
          <description>%_UI_SpecificationModelWizard_description</description>
@@ -25,12 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated specification -->
       <editor
-            id="specification.presentation.SpecificationEditorID"
+            id="fr.obeo.intent.specification.presentation.SpecificationEditorID"
             name="%_UI_SpecificationEditor_label"
             icon="icons/full/obj16/SpecificationModelFile.gif"
             extensions="specification"
-            class="specification.presentation.SpecificationEditor"
-            contributorClass="specification.presentation.SpecificationActionBarContributor">
+            class="fr.obeo.intent.specification.presentation.SpecificationEditor"
+            contributorClass="fr.obeo.intent.specification.presentation.SpecificationActionBarContributor">
       </editor>
    </extension>
 

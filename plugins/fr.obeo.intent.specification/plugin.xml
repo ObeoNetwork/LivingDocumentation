@@ -17,4 +17,12 @@
             genModel="model/specification.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated specification -->
+      <package
+            uri="http://www.eclipse.org/intent/specification/1.0"
+            class="fr.obeo.intent.specification.SpecificationPackage"
+            genModel="model/specification.genmodel"/>
+   </extension>
+
 </plugin>

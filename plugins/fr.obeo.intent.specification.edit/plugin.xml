@@ -10,7 +10,7 @@
       <!-- @generated specification -->
       <factory
             uri="http://www.eclipse.org/intent/specification/1.0"
-            class="specification.provider.SpecificationItemProviderAdapterFactory"
+            class="fr.obeo.intent.specification.provider.SpecificationItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

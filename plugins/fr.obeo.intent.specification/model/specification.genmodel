@@ -4,7 +4,8 @@
     modelName="Specification" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
     copyrightFields="false" runtimeVersion="2.8">
   <foreignModel>specification.ecore</foreignModel>
-  <genPackages prefix="Specification" disposableProviderFactory="true" ecorePackage="specification.ecore#/">
+  <genPackages prefix="Specification" basePackage="fr.obeo.intent" disposableProviderFactory="true"
+      ecorePackage="specification.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="specification.ecore#//TestType">
       <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/unit"/>
       <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/plugin"/>
@@ -28,16 +29,16 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Story/as"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Story/soThat"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference specification.ecore#//Story/scenarios"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute specification.ecore#//Story/title"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Story/iWant"/>
     </genClasses>
     <genClasses ecoreClass="specification.ecore#//Scenario">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute specification.ecore#//Scenario/title"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Scenario/given"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Scenario/when"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Scenario/then"/>
     </genClasses>
-    <genClasses ecoreClass="specification.ecore#//Context"/>
+    <genClasses ecoreClass="specification.ecore#//Context">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference specification.ecore#//Context/contexts"/>
+    </genClasses>
     <genClasses ecoreClass="specification.ecore#//Action"/>
     <genClasses ecoreClass="specification.ecore#//Behaviour"/>
     <genClasses ecoreClass="specification.ecore#//AutomationLayer">

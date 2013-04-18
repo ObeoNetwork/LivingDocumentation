@@ -29,11 +29,9 @@
         eType="#//Benefit"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" lowerBound="1"
         upperBound="-1" eType="#//Scenario" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="iWant" lowerBound="1" eType="#//Capability"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="given" lowerBound="1" upperBound="-1"
         eType="#//Context"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="when" lowerBound="1" upperBound="-1"
@@ -41,7 +39,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="then" lowerBound="1" upperBound="-1"
         eType="#//Behaviour"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//ScenarioElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//ScenarioElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" upperBound="-1"
+        eType="#//Context" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//ScenarioElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Behaviour" eSuperTypes="#//ScenarioElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AutomationLayer">
