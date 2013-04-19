@@ -37,7 +37,15 @@
 [/if]
 [/template]
 
-[query public getTestClasses (namedElement : NamedElement, type : TestType) : Set(NamedElement) = if namedElement.oclIsTypeOf(Feature) then getTestTypeFeatures(namedElement.oclAsType(Feature).features, type)->union(namedElement.oclAsType(Feature).stories) else namedElement.oclAsType(Story).scenarios endif/]
+[query public getTestClasses (namedElement : NamedElement, type : TestType) : Set(NamedElement) = 
+if namedElement.oclIsTypeOf(Specification) then 
+getTestTypeFeatures(namedElement.oclAsType(Specification).features, type)
+else if namedElement.oclIsTypeOf(Feature) then 
+getTestTypeFeatures(namedElement.oclAsType(Feature).features, type)->union(namedElement.oclAsType(Feature).stories) 
+else 
+namedElement.oclAsType(Story).scenarios 
+endif
+endif /]
 
 [template public getBasePath()post (trim())]
 src/
