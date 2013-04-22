@@ -78,6 +78,7 @@
     <eLiterals name="unit"/>
     <eLiterals name="plugin" value="1"/>
     <eLiterals name="ui" value="2"/>
+    <eLiterals name="manual"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

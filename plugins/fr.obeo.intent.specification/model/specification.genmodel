@@ -10,6 +10,7 @@
       <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/unit"/>
       <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/plugin"/>
       <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/ui"/>
+      <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/manual"/>
     </genEnums>
     <genClasses ecoreClass="specification.ecore#//Specification">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference specification.ecore#//Specification/features"/>
@@ -35,6 +36,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Scenario/given"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Scenario/when"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Scenario/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference specification.ecore#//Scenario/values"/>
     </genClasses>
     <genClasses ecoreClass="specification.ecore#//Context">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference specification.ecore#//Context/contexts"/>
@@ -56,9 +58,16 @@
     </genClasses>
     <genClasses ecoreClass="specification.ecore#//ImplementationNote"/>
     <genClasses ecoreClass="specification.ecore#//TestNote"/>
-    <genClasses ecoreClass="specification.ecore#//ScenarioElement"/>
+    <genClasses ecoreClass="specification.ecore#//ScenarioElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference specification.ecore#//ScenarioElement/parameters"/>
+    </genClasses>
     <genClasses ecoreClass="specification.ecore#//TestGenerationNote">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute specification.ecore#//TestGenerationNote/type"/>
     </genClasses>
+    <genClasses ecoreClass="specification.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute specification.ecore#//Value/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference specification.ecore#//Value/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="specification.ecore#//Parameter"/>
   </genPackages>
 </genmodel:GenModel>

@@ -876,6 +876,7 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		addEEnumLiteral(testTypeEEnum, TestType.UNIT);
 		addEEnumLiteral(testTypeEEnum, TestType.PLUGIN);
 		addEEnumLiteral(testTypeEEnum, TestType.UI);
+		addEEnumLiteral(testTypeEEnum, TestType.MANUAL);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -46,7 +46,15 @@ public enum TestType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	UI(2, "ui", "ui");
+	UI(2, "ui", "ui"), /**
+	 * The '<em><b>Manual</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MANUAL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MANUAL(0, "manual", "manual");
 
 	/**
 	 * The '<em><b>Unit</b></em>' literal value.
@@ -94,6 +102,21 @@ public enum TestType implements Enumerator {
 	public static final int UI_VALUE = 2;
 
 	/**
+	 * The '<em><b>Manual</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Manual</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MANUAL
+	 * @model name="manual"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MANUAL_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Test Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,6 +127,7 @@ public enum TestType implements Enumerator {
 			UNIT,
 			PLUGIN,
 			UI,
+			MANUAL,
 		};
 
 	/**
