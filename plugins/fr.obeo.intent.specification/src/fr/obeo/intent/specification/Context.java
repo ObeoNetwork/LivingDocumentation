@@ -22,17 +22,17 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Context extends ScenarioElement {
 	/**
-	 * Returns the value of the '<em><b>Contexts</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Contexts</b></em>' reference list.
 	 * The list contents are of type {@link fr.obeo.intent.specification.Context}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Contexts</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Contexts</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contexts</em>' containment reference list.
+	 * @return the value of the '<em>Contexts</em>' reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getContext_Contexts()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<Context> getContexts();

@@ -77,6 +77,9 @@ public class SpecificationItemProvider
 			childrenFeatures.add(SpecificationPackage.Literals.SPECIFICATION__FEATURES);
 			childrenFeatures.add(SpecificationPackage.Literals.SPECIFICATION__ROLES);
 			childrenFeatures.add(SpecificationPackage.Literals.SPECIFICATION__AUTOMATION_LAYER);
+			childrenFeatures.add(SpecificationPackage.Literals.SPECIFICATION__STORIES);
+			childrenFeatures.add(SpecificationPackage.Literals.SPECIFICATION__BENEFITS);
+			childrenFeatures.add(SpecificationPackage.Literals.SPECIFICATION__CAPABILITIES);
 		}
 		return childrenFeatures;
 	}
@@ -134,6 +137,9 @@ public class SpecificationItemProvider
 			case SpecificationPackage.SPECIFICATION__FEATURES:
 			case SpecificationPackage.SPECIFICATION__ROLES:
 			case SpecificationPackage.SPECIFICATION__AUTOMATION_LAYER:
+			case SpecificationPackage.SPECIFICATION__STORIES:
+			case SpecificationPackage.SPECIFICATION__BENEFITS:
+			case SpecificationPackage.SPECIFICATION__CAPABILITIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,6 +171,21 @@ public class SpecificationItemProvider
 			(createChildParameter
 				(SpecificationPackage.Literals.SPECIFICATION__AUTOMATION_LAYER,
 				 SpecificationFactory.eINSTANCE.createAutomationLayer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SpecificationPackage.Literals.SPECIFICATION__STORIES,
+				 SpecificationFactory.eINSTANCE.createStory()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SpecificationPackage.Literals.SPECIFICATION__BENEFITS,
+				 SpecificationFactory.eINSTANCE.createBenefit()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SpecificationPackage.Literals.SPECIFICATION__CAPABILITIES,
+				 SpecificationFactory.eINSTANCE.createCapability()));
 	}
 
 }

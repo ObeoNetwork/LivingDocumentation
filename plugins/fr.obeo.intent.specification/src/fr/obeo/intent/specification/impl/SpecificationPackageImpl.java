@@ -23,8 +23,8 @@ import fr.obeo.intent.specification.Story;
 import fr.obeo.intent.specification.TestGenerationNote;
 import fr.obeo.intent.specification.TestNote;
 import fr.obeo.intent.specification.TestType;
-
 import fr.obeo.intent.specification.Value;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -282,6 +282,33 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSpecification_Stories() {
+		return (EReference)specificationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecification_Benefits() {
+		return (EReference)specificationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecification_Capabilities() {
+		return (EReference)specificationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFeature() {
 		return featureEClass;
 	}
@@ -291,7 +318,7 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFeature_Stories() {
+	public EReference getFeature_RefFeatures() {
 		return (EReference)featureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -300,26 +327,8 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFeature_Benefits() {
+	public EReference getFeature_Stories() {
 		return (EReference)featureEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFeature_Capabilities() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFeature_Features() {
-		return (EReference)featureEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -696,12 +705,13 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		createEReference(specificationEClass, SPECIFICATION__FEATURES);
 		createEReference(specificationEClass, SPECIFICATION__ROLES);
 		createEReference(specificationEClass, SPECIFICATION__AUTOMATION_LAYER);
+		createEReference(specificationEClass, SPECIFICATION__STORIES);
+		createEReference(specificationEClass, SPECIFICATION__BENEFITS);
+		createEReference(specificationEClass, SPECIFICATION__CAPABILITIES);
 
 		featureEClass = createEClass(FEATURE);
+		createEReference(featureEClass, FEATURE__REF_FEATURES);
 		createEReference(featureEClass, FEATURE__STORIES);
-		createEReference(featureEClass, FEATURE__BENEFITS);
-		createEReference(featureEClass, FEATURE__CAPABILITIES);
-		createEReference(featureEClass, FEATURE__FEATURES);
 
 		roleEClass = createEClass(ROLE);
 
@@ -808,14 +818,20 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		// Initialize classes and features; add operations and parameters
 		initEClass(specificationEClass, Specification.class, "Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSpecification_Features(), this.getFeature(), null, "features", null, 1, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getSpecification_Features().getEKeys().add(this.getNamedElement_Name());
 		initEReference(getSpecification_Roles(), this.getRole(), null, "roles", null, 1, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getSpecification_Roles().getEKeys().add(this.getNamedElement_Name());
 		initEReference(getSpecification_AutomationLayer(), this.getAutomationLayer(), null, "automationLayer", null, 0, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecification_Stories(), this.getStory(), null, "stories", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getSpecification_Stories().getEKeys().add(this.getNamedElement_Name());
+		initEReference(getSpecification_Benefits(), this.getBenefit(), null, "benefits", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getSpecification_Benefits().getEKeys().add(this.getNamedElement_Name());
+		initEReference(getSpecification_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getSpecification_Capabilities().getEKeys().add(this.getNamedElement_Name());
 
 		initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFeature_Stories(), this.getStory(), null, "stories", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Benefits(), this.getBenefit(), null, "benefits", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeature_Features(), this.getFeature(), null, "features", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeature_RefFeatures(), this.getFeature(), null, "refFeatures", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeature_Stories(), this.getStory(), null, "stories", null, 0, -1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -824,9 +840,10 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		initEClass(benefitEClass, Benefit.class, "Benefit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(storyEClass, Story.class, "Story", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStory_As(), this.getRole(), null, "as", null, 1, 1, Story.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStory_As(), this.getRole(), null, "As", null, 1, 1, Story.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStory_SoThat(), this.getBenefit(), null, "soThat", null, 1, 1, Story.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStory_Scenarios(), this.getScenario(), null, "scenarios", null, 1, -1, Story.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getStory_Scenarios().getEKeys().add(this.getNamedElement_Name());
 		initEReference(getStory_IWant(), this.getCapability(), null, "iWant", null, 1, 1, Story.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -836,7 +853,7 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 		initEReference(getScenario_Values(), this.getValue(), null, "values", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contextEClass, Context.class, "Context", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContext_Contexts(), this.getContext(), null, "contexts", null, 0, -1, Context.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContext_Contexts(), this.getContext(), null, "contexts", null, 0, -1, Context.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -844,12 +861,15 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 
 		initEClass(automationLayerEClass, AutomationLayer.class, "AutomationLayer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAutomationLayer_Context(), this.getContext(), null, "context", null, 0, -1, AutomationLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getAutomationLayer_Context().getEKeys().add(this.getNamedElement_Name());
 		initEReference(getAutomationLayer_Actions(), this.getAction(), null, "actions", null, 0, -1, AutomationLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getAutomationLayer_Actions().getEKeys().add(this.getNamedElement_Name());
 		initEReference(getAutomationLayer_Behaviours(), this.getBehaviour(), null, "behaviours", null, 0, -1, AutomationLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getAutomationLayer_Behaviours().getEKeys().add(this.getNamedElement_Name());
 		initEAttribute(getAutomationLayer_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, AutomationLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNamedElement_Notes(), this.getNote(), null, "notes", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(noteEClass, Note.class, "Note", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

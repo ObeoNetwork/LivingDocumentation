@@ -46,7 +46,9 @@ public enum TestType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	UI(2, "ui", "ui"), /**
+	UI(2, "ui", "ui"),
+
+	/**
 	 * The '<em><b>Manual</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

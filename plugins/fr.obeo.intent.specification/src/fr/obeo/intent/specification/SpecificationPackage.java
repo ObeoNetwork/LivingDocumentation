@@ -149,13 +149,40 @@ public interface SpecificationPackage extends EPackage {
 	int SPECIFICATION__AUTOMATION_LAYER = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Stories</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__STORIES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Benefits</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__BENEFITS = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFICATION__CAPABILITIES = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFICATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SPECIFICATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.FeatureImpl <em>Feature</em>}' class.
@@ -186,40 +213,22 @@ public interface SpecificationPackage extends EPackage {
 	int FEATURE__NOTES = NAMED_ELEMENT__NOTES;
 
 	/**
-	 * The feature id for the '<em><b>Stories</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Ref Features</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__STORIES = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int FEATURE__REF_FEATURES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Benefits</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Stories</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE__BENEFITS = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__CAPABILITIES = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__FEATURES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int FEATURE__STORIES = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Feature</em>' class.
@@ -228,7 +237,7 @@ public interface SpecificationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link fr.obeo.intent.specification.impl.RoleImpl <em>Role</em>}' class.
@@ -571,7 +580,7 @@ public interface SpecificationPackage extends EPackage {
 	int CONTEXT__PARAMETERS = SCENARIO_ELEMENT__PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>Contexts</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contexts</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -985,6 +994,39 @@ public interface SpecificationPackage extends EPackage {
 	EReference getSpecification_AutomationLayer();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Specification#getStories <em>Stories</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Stories</em>'.
+	 * @see fr.obeo.intent.specification.Specification#getStories()
+	 * @see #getSpecification()
+	 * @generated
+	 */
+	EReference getSpecification_Stories();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Specification#getBenefits <em>Benefits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Benefits</em>'.
+	 * @see fr.obeo.intent.specification.Specification#getBenefits()
+	 * @see #getSpecification()
+	 * @generated
+	 */
+	EReference getSpecification_Benefits();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Specification#getCapabilities <em>Capabilities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Capabilities</em>'.
+	 * @see fr.obeo.intent.specification.Specification#getCapabilities()
+	 * @see #getSpecification()
+	 * @generated
+	 */
+	EReference getSpecification_Capabilities();
+
+	/**
 	 * Returns the meta object for class '{@link fr.obeo.intent.specification.Feature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -995,48 +1037,26 @@ public interface SpecificationPackage extends EPackage {
 	EClass getFeature();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Feature#getStories <em>Stories</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.obeo.intent.specification.Feature#getRefFeatures <em>Ref Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Stories</em>'.
+	 * @return the meta object for the reference list '<em>Ref Features</em>'.
+	 * @see fr.obeo.intent.specification.Feature#getRefFeatures()
+	 * @see #getFeature()
+	 * @generated
+	 */
+	EReference getFeature_RefFeatures();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.obeo.intent.specification.Feature#getStories <em>Stories</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Stories</em>'.
 	 * @see fr.obeo.intent.specification.Feature#getStories()
 	 * @see #getFeature()
 	 * @generated
 	 */
 	EReference getFeature_Stories();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Feature#getBenefits <em>Benefits</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Benefits</em>'.
-	 * @see fr.obeo.intent.specification.Feature#getBenefits()
-	 * @see #getFeature()
-	 * @generated
-	 */
-	EReference getFeature_Benefits();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Feature#getCapabilities <em>Capabilities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Capabilities</em>'.
-	 * @see fr.obeo.intent.specification.Feature#getCapabilities()
-	 * @see #getFeature()
-	 * @generated
-	 */
-	EReference getFeature_Capabilities();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Feature#getFeatures <em>Features</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Features</em>'.
-	 * @see fr.obeo.intent.specification.Feature#getFeatures()
-	 * @see #getFeature()
-	 * @generated
-	 */
-	EReference getFeature_Features();
 
 	/**
 	 * Returns the meta object for class '{@link fr.obeo.intent.specification.Role <em>Role</em>}'.
@@ -1187,10 +1207,10 @@ public interface SpecificationPackage extends EPackage {
 	EClass getContext();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.obeo.intent.specification.Context#getContexts <em>Contexts</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.obeo.intent.specification.Context#getContexts <em>Contexts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Contexts</em>'.
+	 * @return the meta object for the reference list '<em>Contexts</em>'.
 	 * @see fr.obeo.intent.specification.Context#getContexts()
 	 * @see #getContext()
 	 * @generated
@@ -1495,6 +1515,30 @@ public interface SpecificationPackage extends EPackage {
 		EReference SPECIFICATION__AUTOMATION_LAYER = eINSTANCE.getSpecification_AutomationLayer();
 
 		/**
+		 * The meta object literal for the '<em><b>Stories</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFICATION__STORIES = eINSTANCE.getSpecification_Stories();
+
+		/**
+		 * The meta object literal for the '<em><b>Benefits</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFICATION__BENEFITS = eINSTANCE.getSpecification_Benefits();
+
+		/**
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFICATION__CAPABILITIES = eINSTANCE.getSpecification_Capabilities();
+
+		/**
 		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.FeatureImpl <em>Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1505,36 +1549,20 @@ public interface SpecificationPackage extends EPackage {
 		EClass FEATURE = eINSTANCE.getFeature();
 
 		/**
-		 * The meta object literal for the '<em><b>Stories</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Ref Features</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEATURE__REF_FEATURES = eINSTANCE.getFeature_RefFeatures();
+
+		/**
+		 * The meta object literal for the '<em><b>Stories</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference FEATURE__STORIES = eINSTANCE.getFeature_Stories();
-
-		/**
-		 * The meta object literal for the '<em><b>Benefits</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FEATURE__BENEFITS = eINSTANCE.getFeature_Benefits();
-
-		/**
-		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FEATURE__CAPABILITIES = eINSTANCE.getFeature_Capabilities();
-
-		/**
-		 * The meta object literal for the '<em><b>Features</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FEATURE__FEATURES = eINSTANCE.getFeature_Features();
 
 		/**
 		 * The meta object literal for the '{@link fr.obeo.intent.specification.impl.RoleImpl <em>Role</em>}' class.
@@ -1661,7 +1689,7 @@ public interface SpecificationPackage extends EPackage {
 		EClass CONTEXT = eINSTANCE.getContext();
 
 		/**
-		 * The meta object literal for the '<em><b>Contexts</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Contexts</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

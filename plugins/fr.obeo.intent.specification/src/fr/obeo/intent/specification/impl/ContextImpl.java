@@ -7,15 +7,11 @@ import fr.obeo.intent.specification.SpecificationPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ContextImpl extends ScenarioElementImpl implements Context {
 	/**
-	 * The cached value of the '{@link #getContexts() <em>Contexts</em>}' containment reference list.
+	 * The cached value of the '{@link #getContexts() <em>Contexts</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContexts()
@@ -67,23 +63,9 @@ public class ContextImpl extends ScenarioElementImpl implements Context {
 	 */
 	public EList<Context> getContexts() {
 		if (contexts == null) {
-			contexts = new EObjectContainmentEList<Context>(Context.class, this, SpecificationPackage.CONTEXT__CONTEXTS);
+			contexts = new EObjectResolvingEList<Context>(Context.class, this, SpecificationPackage.CONTEXT__CONTEXTS);
 		}
 		return contexts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case SpecificationPackage.CONTEXT__CONTEXTS:
-				return ((InternalEList<?>)getContexts()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

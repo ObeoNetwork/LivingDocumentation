@@ -37,7 +37,7 @@ public interface AutomationLayer extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Context</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getAutomationLayer_Context()
-	 * @model containment="true"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<Context> getContext();
@@ -53,7 +53,7 @@ public interface AutomationLayer extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getAutomationLayer_Actions()
-	 * @model containment="true"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<Action> getActions();
@@ -69,7 +69,7 @@ public interface AutomationLayer extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Behaviours</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getAutomationLayer_Behaviours()
-	 * @model containment="true"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<Behaviour> getBehaviours();

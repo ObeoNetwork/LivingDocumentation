@@ -87,7 +87,7 @@ public interface Story extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scenarios</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getStory_Scenarios()
-	 * @model containment="true" required="true"
+	 * @model containment="true" keys="name" required="true"
 	 * @generated
 	 */
 	EList<Scenario> getScenarios();

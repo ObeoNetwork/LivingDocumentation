@@ -77,8 +77,8 @@ public class StoryItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Story_as_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Story_as_feature", "_UI_Story_type"),
+				 getString("_UI_Story_As_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Story_As_feature", "_UI_Story_type"),
 				 SpecificationPackage.Literals.STORY__AS,
 				 true,
 				 false,

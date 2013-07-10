@@ -4,31 +4,33 @@
     nsPrefix="specification">
   <eClassifiers xsi:type="ecore:EClass" name="Specification" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" lowerBound="1"
-        upperBound="-1" eType="#//Feature" containment="true"/>
+        upperBound="-1" eType="#//Feature" containment="true" eKeys="#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" lowerBound="1" upperBound="-1"
-        eType="#//Role" containment="true"/>
+        eType="#//Role" containment="true" eKeys="#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="automationLayer" eType="#//AutomationLayer"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stories" upperBound="-1"
+        eType="#//Story" containment="true" eKeys="#//NamedElement/name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="benefits" upperBound="-1"
+        eType="#//Benefit" containment="true" eKeys="#//NamedElement/name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
+        eType="#//Capability" containment="true" eKeys="#//NamedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refFeatures" upperBound="-1"
+        eType="#//Feature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stories" upperBound="-1"
-        eType="#//Story" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="benefits" upperBound="-1"
-        eType="#//Benefit" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
-        eType="#//Capability" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-        eType="#//Feature" containment="true"/>
+        eType="#//Story"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Benefit" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Story" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="as" lowerBound="1" eType="#//Role"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="As" lowerBound="1" eType="#//Role"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="soThat" lowerBound="1"
         eType="#//Benefit"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" lowerBound="1"
-        upperBound="-1" eType="#//Scenario" containment="true"/>
+        upperBound="-1" eType="#//Scenario" containment="true" eKeys="#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="iWant" lowerBound="1" eType="#//Capability"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="#//NamedElement">
@@ -43,22 +45,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//ScenarioElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" upperBound="-1"
-        eType="#//Context" containment="true"/>
+        eType="#//Context"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//ScenarioElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Behaviour" eSuperTypes="#//ScenarioElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="AutomationLayer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" upperBound="-1"
-        eType="#//Context" containment="true"/>
+        eType="#//Context" containment="true" eKeys="#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
-        eType="#//Action" containment="true"/>
+        eType="#//Action" containment="true" eKeys="#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviours" upperBound="-1"
-        eType="#//Behaviour" containment="true"/>
+        eType="#//Behaviour" containment="true" eKeys="#//NamedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notes" upperBound="-1"
         eType="#//Note" containment="true"/>
   </eClassifiers>
