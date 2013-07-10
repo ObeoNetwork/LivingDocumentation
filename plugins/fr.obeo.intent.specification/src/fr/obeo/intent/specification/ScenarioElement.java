@@ -4,7 +4,6 @@ package fr.obeo.intent.specification;
 
 import org.eclipse.emf.common.util.EList;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Scenario Element</b></em>'.
@@ -22,7 +21,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ScenarioElement extends NamedElement {
-
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.obeo.intent.specification.Parameter}.
@@ -38,4 +36,5 @@ public interface ScenarioElement extends NamedElement {
 	 * @generated
 	 */
 	EList<Parameter> getParameters();
+
 } // ScenarioElement

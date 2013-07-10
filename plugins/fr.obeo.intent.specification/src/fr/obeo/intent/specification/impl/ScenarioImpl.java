@@ -7,16 +7,17 @@ import fr.obeo.intent.specification.Behaviour;
 import fr.obeo.intent.specification.Context;
 import fr.obeo.intent.specification.Scenario;
 import fr.obeo.intent.specification.SpecificationPackage;
-
 import fr.obeo.intent.specification.Value;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;

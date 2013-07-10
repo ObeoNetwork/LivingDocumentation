@@ -117,6 +117,8 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -442,15 +444,6 @@ public class SpecificationEditor
 			@Override
 			protected void unsetTarget(Resource target) {
 				basicUnsetTarget(target);
-				resourceToDiagnosticMap.remove(target);
-				if (updateProblemIndication) {
-					getSite().getShell().getDisplay().asyncExec
-						(new Runnable() {
-							 public void run() {
-								 updateProblemIndication();
-							 }
-						 });
-				}
 			}
 		};
 
@@ -484,7 +477,6 @@ public class SpecificationEditor
 										}
 									}
 								}
-								return false;
 							}
 
 							return true;
@@ -1593,9 +1585,20 @@ public class SpecificationEditor
 	 * @generated
 	 */
 	public void gotoMarker(IMarker marker) {
-		List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
-		if (!targetObjects.isEmpty()) {
-			setSelectionToViewer(targetObjects);
+		try {
+			if (marker.getType().equals(EValidator.MARKER)) {
+				String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
+				if (uriAttribute != null) {
+					URI uri = URI.createURI(uriAttribute);
+					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
+					if (eObject != null) {
+					  setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
+					}
+				}
+			}
+		}
+		catch (CoreException exception) {
+			SpecificationEditorPlugin.INSTANCE.log(exception);
 		}
 	}
 

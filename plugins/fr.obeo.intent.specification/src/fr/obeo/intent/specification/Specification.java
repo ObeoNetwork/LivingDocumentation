@@ -15,6 +15,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.obeo.intent.specification.Specification#getFeatures <em>Features</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.Specification#getRoles <em>Roles</em>}</li>
  *   <li>{@link fr.obeo.intent.specification.Specification#getAutomationLayer <em>Automation Layer</em>}</li>
+ *   <li>{@link fr.obeo.intent.specification.Specification#getStories <em>Stories</em>}</li>
+ *   <li>{@link fr.obeo.intent.specification.Specification#getBenefits <em>Benefits</em>}</li>
+ *   <li>{@link fr.obeo.intent.specification.Specification#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,7 +37,7 @@ public interface Specification extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Features</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getSpecification_Features()
-	 * @model containment="true" required="true"
+	 * @model containment="true" keys="name" required="true"
 	 * @generated
 	 */
 	EList<Feature> getFeatures();
@@ -50,7 +53,7 @@ public interface Specification extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Roles</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getSpecification_Roles()
-	 * @model containment="true" required="true"
+	 * @model containment="true" keys="name" required="true"
 	 * @generated
 	 */
 	EList<Role> getRoles();
@@ -80,5 +83,53 @@ public interface Specification extends NamedElement {
 	 * @generated
 	 */
 	void setAutomationLayer(AutomationLayer value);
+
+	/**
+	 * Returns the value of the '<em><b>Stories</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.obeo.intent.specification.Story}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Stories</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Stories</em>' containment reference list.
+	 * @see fr.obeo.intent.specification.SpecificationPackage#getSpecification_Stories()
+	 * @model containment="true" keys="name"
+	 * @generated
+	 */
+	EList<Story> getStories();
+
+	/**
+	 * Returns the value of the '<em><b>Benefits</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.obeo.intent.specification.Benefit}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Benefits</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Benefits</em>' containment reference list.
+	 * @see fr.obeo.intent.specification.SpecificationPackage#getSpecification_Benefits()
+	 * @model containment="true" keys="name"
+	 * @generated
+	 */
+	EList<Benefit> getBenefits();
+
+	/**
+	 * Returns the value of the '<em><b>Capabilities</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.obeo.intent.specification.Capability}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Capabilities</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Capabilities</em>' containment reference list.
+	 * @see fr.obeo.intent.specification.SpecificationPackage#getSpecification_Capabilities()
+	 * @model containment="true" keys="name"
+	 * @generated
+	 */
+	EList<Capability> getCapabilities();
 
 } // Specification

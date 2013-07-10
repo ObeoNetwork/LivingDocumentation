@@ -32,7 +32,7 @@ public interface Context extends ScenarioElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contexts</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getContext_Contexts()
-	 * @model containment="true"
+	 * @model containment="true" keys="name"
 	 * @generated
 	 */
 	EList<Context> getContexts();

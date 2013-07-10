@@ -35,7 +35,7 @@ public interface Story extends NamedElement {
 	 * @return the value of the '<em>As</em>' reference.
 	 * @see #setAs(Role)
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getStory_As()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	Role getAs();
@@ -61,7 +61,7 @@ public interface Story extends NamedElement {
 	 * @return the value of the '<em>So That</em>' reference.
 	 * @see #setSoThat(Benefit)
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getStory_SoThat()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	Benefit getSoThat();
@@ -87,7 +87,7 @@ public interface Story extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scenarios</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getStory_Scenarios()
-	 * @model containment="true" required="true"
+	 * @model containment="true" keys="name" required="true"
 	 * @generated
 	 */
 	EList<Scenario> getScenarios();
@@ -103,7 +103,7 @@ public interface Story extends NamedElement {
 	 * @return the value of the '<em>IWant</em>' reference.
 	 * @see #setIWant(Capability)
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getStory_IWant()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	Capability getIWant();

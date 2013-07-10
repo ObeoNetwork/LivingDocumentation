@@ -35,7 +35,7 @@ public interface Scenario extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Given</em>' reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getScenario_Given()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	EList<Context> getGiven();
@@ -51,7 +51,7 @@ public interface Scenario extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>When</em>' reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getScenario_When()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	EList<Action> getWhen();
@@ -67,7 +67,7 @@ public interface Scenario extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Then</em>' reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getScenario_Then()
-	 * @model required="true"
+	 * @model keys="name" required="true"
 	 * @generated
 	 */
 	EList<Behaviour> getThen();
@@ -83,7 +83,7 @@ public interface Scenario extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Values</em>' containment reference list.
 	 * @see fr.obeo.intent.specification.SpecificationPackage#getScenario_Values()
-	 * @model containment="true"
+	 * @model containment="true" keys="value"
 	 * @generated
 	 */
 	EList<Value> getValues();

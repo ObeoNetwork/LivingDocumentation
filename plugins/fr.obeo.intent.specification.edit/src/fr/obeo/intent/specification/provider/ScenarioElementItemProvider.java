@@ -4,9 +4,9 @@ package fr.obeo.intent.specification.provider;
 
 
 import fr.obeo.intent.specification.ScenarioElement;
-
 import fr.obeo.intent.specification.SpecificationFactory;
 import fr.obeo.intent.specification.SpecificationPackage;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -89,17 +90,6 @@ public class ScenarioElementItemProvider
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns ScenarioElement.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ScenarioElement"));
 	}
 
 	/**
