@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.obeo.intent.specification.xtext
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: fr.obeo.intent.specification.xtext; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ fr.obeo.intent.specification,
+ org.eclipse.xtext.util,
+ org.antlr.runtime
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: fr.obeo.intent.specification,
+ fr.obeo.intent.specification.services,
+ fr.obeo.intent.specification.parseTreeConstruction,
+ fr.obeo.intent.specification.parser.antlr,
+ fr.obeo.intent.specification.parser.antlr.internal,
+ fr.obeo.intent.specification.validation,
+ fr.obeo.intent.specification.scoping,
+ fr.obeo.intent.specification.formatting

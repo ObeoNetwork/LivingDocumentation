@@ -1,0 +1,66 @@
+grammar fr.obeo.intent.specification.Specification with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/intent/specification/1.0" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Specification:
+	'Specification:' name=ID
+	('Roles (' roles+=Role ( "," roles+=Role)* ')')?
+	('Capabilities (' capabilities+=Capability ( "," capabilities+=Capability)* ')')?
+	('Benefits (' benefits+=Benefit ( "," capabilities+=Capability)*')')?
+	(automationLayer=AutomationLayer)?
+	features+=Feature*
+	stories+=Story*
+	;
+
+AutomationLayer:
+	'Contexts (' context+=Context ( "," context+=Context)*')'
+	'Actions (' actions+=Action ( "," actions+=Action)*')'
+	'Behaviors (' behaviours+=Behaviour ( "," behaviours+=Behaviour)*')'
+;
+
+Context:
+	name=ID
+;
+Action:
+	name=ID
+;
+Behaviour:
+	name=ID
+;
+
+
+Feature:
+	'Feature:' name=ID
+	('linked to ' refFeatures+=[Feature]*)?
+	stories+=[Story]*
+	;
+
+Story:
+	'Story:' name=ID
+	('As ' As=[Role])?
+	('I want ' iWant=[Capability])?
+	('So that ' soThat=[Benefit])?
+	scenarios+=Scenario*
+;
+
+Scenario:
+	'Scenario:' name=ID
+	('Given ' given+=[Context]( "," given+=[Context])*)?
+	('When ' when+=[Action]( "," when+=[Action])*)?
+	('Then ' then+=[Behaviour]( "," then+=[Behaviour])*)?
+;
+
+
+Role:
+	name=ID
+;
+
+Capability:
+	name=ID
+;
+
+Benefit:
+	name=ID
+;
+
