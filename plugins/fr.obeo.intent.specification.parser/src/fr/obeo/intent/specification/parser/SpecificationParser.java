@@ -51,6 +51,8 @@ import fr.obeo.intent.specification.Scenario;
 import fr.obeo.intent.specification.Specification;
 import fr.obeo.intent.specification.SpecificationFactory;
 import fr.obeo.intent.specification.Story;
+import fr.obeo.intent.specification.TestGenerationNote;
+import fr.obeo.intent.specification.TestType;
 
 /**
  * This parser is able to parse the specification syntax and create the
@@ -59,6 +61,8 @@ import fr.obeo.intent.specification.Story;
  * @author
  */
 public class SpecificationParser implements IntentExternalParserContribution {
+	private static final String AROBASE = "@";
+
 	/**
 	 * Comma.
 	 */
@@ -195,10 +199,10 @@ public class SpecificationParser implements IntentExternalParserContribution {
 			if (namedElement == null) {
 				story = specificationFactory.createStory();
 				story.setName(storyName);
-				specification.getStories().add((Story)story);
+				specification.getStories().add((Story) story);
 				parsedElements.add(new ParsedElement(intentSection, story));
 			} else if (namedElement instanceof Story) {
-				story = (Story)namedElement;
+				story = (Story) namedElement;
 			} else {
 				throw new UnsupportedOperationException();
 			}
@@ -217,11 +221,11 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					parsedElements
 							.add(new ParsedElement(intentSection, feature));
 				} else if (namedElement instanceof Feature) {
-					feature = (Feature)namedElement;
+					feature = (Feature) namedElement;
 				} else {
 					throw new UnsupportedOperationException();
 				}
-				feature.getStories().add((Story)story);
+				feature.getStories().add((Story) story);
 			}
 
 			String roleName = result.get(SpecificationKeyword.AS.value).trim();
@@ -232,7 +236,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 				role.setName(roleName);
 				specification.getRoles().add(role);
 			} else if (namedElement instanceof Role) {
-				role = (Role)namedElement;
+				role = (Role) namedElement;
 			} else {
 				throw new UnsupportedOperationException();
 			}
@@ -247,7 +251,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 				capability.setName(capabilityName);
 				specification.getCapabilities().add(capability);
 			} else if (namedElement instanceof Capability) {
-				capability = (Capability)namedElement;
+				capability = (Capability) namedElement;
 			} else {
 				throw new UnsupportedOperationException();
 			}
@@ -262,7 +266,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 				benefit.setName(benefitName);
 				specification.getBenefits().add(benefit);
 			} else if (namedElement instanceof Benefit) {
-				benefit = (Benefit)namedElement;
+				benefit = (Benefit) namedElement;
 			} else {
 				throw new UnsupportedOperationException();
 			}
@@ -296,6 +300,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 							.on(SpecificationKeyword.SCENARIO.value + COLON)
 							.trimResults().omitEmptyStrings().split(result)
 							.iterator().next();
+					// Scenario: Name [Parent Story]
 					final String scenarioName = scenarioDescription.substring(
 							0, scenarioDescription.indexOf(OPEN_BRACKET))
 							.trim();
@@ -308,9 +313,28 @@ public class SpecificationParser implements IntentExternalParserContribution {
 						parsedElements.add(new ParsedElement(intentSection,
 								scenario));
 					} else if (namedElement instanceof Scenario) {
-						scenario = (Scenario)namedElement;
+						scenario = (Scenario) namedElement;
 					} else {
 						throw new UnsupportedOperationException();
+					}
+
+					// Scenario: Name [Parent Story] @ui
+					TestGenerationNote testNote = specificationFactory
+							.createTestGenerationNote();
+					scenario.getNotes().add(testNote);
+					if (scenarioDescription.contains(AROBASE)) {
+						final String scenarioTestType = scenarioDescription
+								.substring(scenarioDescription.indexOf(AROBASE));
+						if (scenarioTestType.contains(TestType.UI.getName()
+								.toLowerCase())) {
+							testNote.setType(TestType.UI);
+						} else if (scenarioTestType.contains(TestType.UNIT
+								.getName().toLowerCase())) {
+							testNote.setType(TestType.UNIT);
+						} else if (scenarioTestType.contains(TestType.PLUGIN
+								.getName().toLowerCase())) {
+							testNote.setType(TestType.PLUGIN);
+						}
 					}
 
 					String stories = scenarioDescription.substring(
@@ -327,7 +351,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 							parsedElements.add(new ParsedElement(intentSection,
 									story));
 						} else if (namedElement instanceof Story) {
-							story = (Story)namedElement;
+							story = (Story) namedElement;
 						} else {
 							throw new UnsupportedOperationException();
 						}
@@ -346,7 +370,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 						context.setName(contextName);
 						automationLayer.getContext().add(context);
 					} else if (namedElement instanceof Context) {
-						context = (Context)namedElement;
+						context = (Context) namedElement;
 					} else {
 						throw new UnsupportedOperationException();
 					}
@@ -364,7 +388,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 						action.setName(actionName);
 						automationLayer.getActions().add(action);
 					} else if (namedElement instanceof Action) {
-						action = (Action)namedElement;
+						action = (Action) namedElement;
 					} else {
 						throw new UnsupportedOperationException();
 					}
@@ -382,7 +406,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 						behaviour.setName(behaviourName);
 						automationLayer.getBehaviours().add(behaviour);
 					} else if (namedElement instanceof Behaviour) {
-						behaviour = (Behaviour)namedElement;
+						behaviour = (Behaviour) namedElement;
 					} else {
 						throw new UnsupportedOperationException();
 					}
@@ -434,10 +458,10 @@ public class SpecificationParser implements IntentExternalParserContribution {
 			if (namedElement == null) {
 				feature = specificationFactory.createFeature();
 				feature.setName(featureName);
-				specification.getFeatures().add((Feature)feature);
+				specification.getFeatures().add((Feature) feature);
 				parsedElements.add(new ParsedElement(intentSection, feature));
 			} else if (namedElement instanceof Feature) {
-				feature = (Feature)namedElement;
+				feature = (Feature) namedElement;
 			} else {
 				throw new UnsupportedOperationException();
 			}
@@ -456,11 +480,11 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					parsedElements.add(new ParsedElement(intentSection,
 							refFeature));
 				} else if (namedElement instanceof Feature) {
-					refFeature = (Feature)namedElement;
+					refFeature = (Feature) namedElement;
 				} else {
 					throw new UnsupportedOperationException();
 				}
-				refFeature.getRefFeatures().add((Feature)feature);
+				refFeature.getRefFeatures().add((Feature) feature);
 			}
 		}
 	}
@@ -542,14 +566,14 @@ public class SpecificationParser implements IntentExternalParserContribution {
 								&& eObject instanceof NamedElement
 								&& type.getSimpleName().equals(
 										eObject.eClass().getName())) {
-							return elementName.equals(((NamedElement)eObject)
+							return elementName.equals(((NamedElement) eObject)
 									.getName());
 						}
 						return false;
 					}
 				});
 		if (it.hasNext()) {
-			return (NamedElement)it.next();
+			return (NamedElement) it.next();
 		}
 		return null;
 	}
@@ -558,10 +582,11 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	public void init() {
 		parsedElements.clear();
 		specification = specificationFactory.createSpecification();
+		specification.setName("UML Designer");
 		automationLayer = specificationFactory.createAutomationLayer();
+		automationLayer.setBasePackage("org.obeonetwork.dsl.uml2.design.tests");
 		specification.setAutomationLayer(automationLayer);
 	}
-
 	@Override
 	public void parsePostOperations(RepositoryAdapter repositoryAdapter) {
 		for (ParsedElement parsedElement : parsedElements) {
@@ -646,7 +671,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 		Iterator<String> iterator = currentSentences.iterator();
 		String currentSentence = null;
 		while (iterator.hasNext()) {
-			currentSentence = (String)iterator.next();
+			currentSentence = (String) iterator.next();
 		}
 
 		List<ExternalParserCompletionProposal> variables = Lists.newArrayList();
@@ -655,6 +680,11 @@ public class SpecificationParser implements IntentExternalParserContribution {
 				&& currentSentence.contains(OPEN_BRACKET)) {
 			// Feature: Name[Features] or Story: Name [Features]
 			variables.addAll(getAllFeatures());
+		} else if ((currentSentence
+				.contains(SpecificationKeyword.SCENARIO.value))
+				&& currentSentence.contains(CLOSE_BRACKET)) {
+			// Scenario: Name[Stories]@
+			variables.addAll(getAllTestTypes());
 		} else if ((currentSentence
 				.contains(SpecificationKeyword.SCENARIO.value))
 				&& currentSentence.contains(OPEN_BRACKET)) {
@@ -681,6 +711,35 @@ public class SpecificationParser implements IntentExternalParserContribution {
 		}
 		return variables;
 	}
+	/**
+	 * Get all the possible test types.
+	 * 
+	 * @return List of test types
+	 */
+	private List<ExternalParserCompletionProposal> getAllTestTypes() {
+		List<ExternalParserCompletionProposal> types = Lists.newArrayList();
+		types.add(new ExternalParserCompletionProposal(AROBASE
+				+ TestType.UI.getName().toLowerCase(),
+				"Define type of generated test", null,
+				SpecificationParserActivator.getDefault().getImage(
+						"icon/specification/TestGenerationNote.gif")));
+		types.add(new ExternalParserCompletionProposal(AROBASE
+				+ TestType.UNIT.getName().toLowerCase(),
+				"Define type of generated test", null,
+				SpecificationParserActivator.getDefault().getImage(
+						"icon/specification/TestGenerationNote.gif")));
+		types.add(new ExternalParserCompletionProposal(AROBASE
+				+ TestType.PLUGIN.getName().toLowerCase(),
+				"Define type of generated test", null,
+				SpecificationParserActivator.getDefault().getImage(
+						"icon/specification/TestGenerationNote.gif")));
+		types.add(new ExternalParserCompletionProposal(AROBASE
+				+ TestType.MANUAL.getName().toLowerCase(),
+				"Define type of generated test", null,
+				SpecificationParserActivator.getDefault().getImage(
+						"icon/specification/TestGenerationNote.gif")));
+		return types;
+	}
 
 	/**
 	 * Get all roles defined in the specification.
@@ -690,7 +749,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	private List<ExternalParserCompletionProposal> getAllRoles() {
 		URI uri = URI.createPlatformResourceURI(SPECIFICATION_PATH, true);
 		Resource resource = resourceSet.getResource(uri, true);
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Role role : specification.getRoles()) {
@@ -709,7 +768,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All benefits defined in the specification or en empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllBenefits() {
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Benefit benefit : specification.getBenefits()) {
@@ -728,7 +787,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All capabilities defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllCapabilities() {
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Capability capability : specification.getCapabilities()) {
@@ -747,7 +806,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All contexts defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllContexts() {
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Context context : specification.getAutomationLayer().getContext()) {
@@ -766,7 +825,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All behaviours defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllBehaviours() {
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Behaviour behaviour : specification.getAutomationLayer()
@@ -787,7 +846,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 */
 	private List<ExternalParserCompletionProposal> getAllActions() {
 		Resource resource = resourceSet.getResource(uri, true);
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Action action : specification.getAutomationLayer().getActions()) {
@@ -806,7 +865,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All features defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllFeatures() {
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Feature feature : specification.getFeatures()) {
@@ -825,7 +884,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All stories defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllStories() {
-		Specification specification = (Specification)resource.getContents()
+		Specification specification = (Specification) resource.getContents()
 				.get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
 		for (Story story : specification.getStories()) {
@@ -845,7 +904,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 		Iterator<String> iterator = currentSentences.iterator();
 		String currentSentence = null;
 		while (iterator.hasNext()) {
-			currentSentence = (String)iterator.next();
+			currentSentence = (String) iterator.next();
 		}
 
 		if (currentSentence
