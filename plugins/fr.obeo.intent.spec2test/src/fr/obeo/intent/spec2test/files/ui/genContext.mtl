@@ -3,7 +3,7 @@
 [import fr::obeo::intent::spec2test::files::genAutomationUtils /]
 
 [template public genContext(contxt : Context)]
-[file (getContextsPath(contxt.eContainer(Specification))+'/'+contxt.name+'.java', false, 'UTF-8')]
+[file (getContextsPath(contxt.eContainer(Specification))+'/'+contxt.getCamelCaseName()+'.java', false, 'UTF-8')]
 [genLicence()/]
 package [getContextsPackage(contxt.eContainer(Specification))/];
 
@@ -14,28 +14,28 @@ import static org.junit.Assert.*;
 	import [getAutomationPackage(contxt.eContainer(Specification))/].Context;
 [/if]
 
-// [protected (contxt.name+' imports')]
+// [protected (contxt.getCamelCaseName()+' imports')]
 // TODO Define imports
 // [/protected]
 
 /**
  * Context : [contxt.name/]
  */
-public class [contxt.name/] extends [getContextInheritance()/] {
-// [protected (contxt.name+' variables')]
+public class [contxt.getCamelCaseName()/] extends [getContextInheritance()/] {
+// [protected (contxt.getCamelCaseName()+' variables')]
 // TODO Define private variables
 // [/protected]
 
 	@Override
 	public void setup() {
-		// [protected (contxt.name+' setup')]
+		// [protected (contxt.getCamelCaseName()+' setup')]
 		// TODO Implement context setup
 		// [/protected]
 	}
 
 	@Override
 	public void tearDown() {
-		// [protected (contxt.name+' tear down')]
+		// [protected (contxt.getCamelCaseName()+' tear down')]
 		// TODO Implement context tear down
 		// [/protected]
 	}
@@ -44,10 +44,10 @@ public class [contxt.name/] extends [getContextInheritance()/] {
 	/**
 	 * Action : [action.name/]
 	 */
-	public void action[action.name/]() {
-		// [protected (action.name)]
-		// TODO Implement action [action.name/]
-		fail("Action [action.name/] not implemented");
+	public void action[action.getCamelCaseName()/]([action.getParameters()/]) {
+		// [protected (action.getCamelCaseName())]
+		// TODO Implement action [action.getCamelCaseName()/]
+		fail("Action [action.getCamelCaseName()/] not implemented");
 		// [/protected]
 	}
 
@@ -56,16 +56,16 @@ public class [contxt.name/] extends [getContextInheritance()/] {
 	/**
 	 * Behavior : [behaviour.name/]
 	 */
-	public void assert[behaviour.name/]() {
-		// [protected (behaviour.name)]
-		// TODO Implement behavior [behaviour.name/]
-		fail("Behavior [behaviour.name/] not implemented");
+	public void assert[behaviour.getCamelCaseName()/]([behaviour.getParameters()/]) {
+		// [protected (behaviour.getCamelCaseName())]
+		// TODO Implement behavior [behaviour.getCamelCaseName()/]
+		fail("Behavior [behaviour.getCamelCaseName()/] not implemented");
 		// [/protected]
 	}
 [/for]
 [/if]
 
-// [protected (contxt.name+' private methods')]
+// [protected (contxt.getCamelCaseName()+' private methods')]
 // TODO Define private methods
 // [/protected]
 }
@@ -75,8 +75,14 @@ public class [contxt.name/] extends [getContextInheritance()/] {
 [/for]
 [/template]
 
+[query public getParameters (scenarioElement : ScenarioElement) : String = 
+if scenarioElement.parameters->size()>0 then
+scenarioElement.parameters.name->collect(param|'String ' + param)->sep(',')
+else
+''
+endif
+/]
 
-
-[query public getContextInheritance(contxt : Context) : String = if contxt.eContainer(Context)->size()>0 then contxt.eContainer(Context).name else 'Context' endif /]
+[query public getContextInheritance(contxt : Context) : String = if contxt.eContainer(Context)->size()>0 then contxt.eContainer(Context).getCamelCaseName() else 'Context' endif /]
 
 [query public getScenarios (contxt : Context) : OrderedSet(Scenario) = contxt.eInverse(Scenario)/]

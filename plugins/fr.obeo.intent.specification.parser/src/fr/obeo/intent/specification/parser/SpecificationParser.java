@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
@@ -46,8 +47,10 @@ import fr.obeo.intent.specification.Capability;
 import fr.obeo.intent.specification.Context;
 import fr.obeo.intent.specification.Feature;
 import fr.obeo.intent.specification.NamedElement;
+import fr.obeo.intent.specification.Parameter;
 import fr.obeo.intent.specification.Role;
 import fr.obeo.intent.specification.Scenario;
+import fr.obeo.intent.specification.ScenarioElement;
 import fr.obeo.intent.specification.Specification;
 import fr.obeo.intent.specification.SpecificationFactory;
 import fr.obeo.intent.specification.Story;
@@ -61,6 +64,8 @@ import fr.obeo.intent.specification.TestType;
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
 public class SpecificationParser implements IntentExternalParserContribution {
+	private static final String VARIABLE = "$";
+
 	private static final String AROBASE = "@";
 
 	/**
@@ -375,10 +380,21 @@ public class SpecificationParser implements IntentExternalParserContribution {
 						story.getScenarios().add(scenario);
 					}
 				} else if (result.startsWith(SpecificationKeyword.GIVEN.value)) {
-					String contextName = Splitter
-							.on(SpecificationKeyword.GIVEN.value + COLON)
-							.trimResults().omitEmptyStrings().split(result)
-							.iterator().next();
+					String contextName = null;
+					if (result.contains(VARIABLE)) {
+						contextName = Splitter
+								.on(SpecificationKeyword.GIVEN.value + COLON)
+								.trimResults()
+								.omitEmptyStrings()
+								.split(result.substring(0,
+										result.indexOf(VARIABLE))).iterator()
+								.next();
+					} else {
+						contextName = Splitter
+								.on(SpecificationKeyword.GIVEN.value + COLON)
+								.trimResults().omitEmptyStrings().split(result)
+								.iterator().next();
+					}
 					NamedElement namedElement = getNamedElement(contextName,
 							Context.class);
 					Context context = null;
@@ -391,12 +407,24 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					} else {
 						throw new UnsupportedOperationException();
 					}
+					parseParameters(result, context);
 					scenario.getGiven().add(context);
 				} else if (result.startsWith(SpecificationKeyword.WHEN.value)) {
-					String actionName = Splitter
-							.on(SpecificationKeyword.WHEN.value + COLON)
-							.trimResults().omitEmptyStrings().split(result)
-							.iterator().next();
+					String actionName = null;
+					if (result.contains(VARIABLE)) {
+						actionName = Splitter
+								.on(SpecificationKeyword.WHEN.value + COLON)
+								.trimResults()
+								.omitEmptyStrings()
+								.split(result.substring(0,
+										result.indexOf(VARIABLE))).iterator()
+								.next();
+					} else {
+						actionName = Splitter
+								.on(SpecificationKeyword.WHEN.value + COLON)
+								.trimResults().omitEmptyStrings().split(result)
+								.iterator().next();
+					}
 					NamedElement namedElement = getNamedElement(actionName,
 							Action.class);
 					Action action = null;
@@ -409,12 +437,26 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					} else {
 						throw new UnsupportedOperationException();
 					}
+					parseParameters(result, action);
+
 					scenario.getWhen().add(action);
 				} else if (result.startsWith(SpecificationKeyword.THEN.value)) {
-					String behaviourName = Splitter
-							.on(SpecificationKeyword.THEN.value + COLON)
-							.trimResults().omitEmptyStrings().split(result)
-							.iterator().next();
+
+					String behaviourName = null;
+					if (result.contains(VARIABLE)) {
+						behaviourName = Splitter
+								.on(SpecificationKeyword.THEN.value + COLON)
+								.trimResults()
+								.omitEmptyStrings()
+								.split(result.substring(0,
+										result.indexOf(VARIABLE))).iterator()
+								.next();
+					} else {
+						behaviourName = Splitter
+								.on(SpecificationKeyword.THEN.value + COLON)
+								.trimResults().omitEmptyStrings().split(result)
+								.iterator().next();
+					}
 					NamedElement namedElement = getNamedElement(behaviourName,
 							Behaviour.class);
 					Behaviour behaviour = null;
@@ -427,8 +469,35 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					} else {
 						throw new UnsupportedOperationException();
 					}
+					parseParameters(result, behaviour);
 					scenario.getThen().add(behaviour);
 				}
+			}
+		}
+	}
+
+	/**
+	 * Parse the parameters.
+	 * 
+	 * @param description
+	 *            Description to parse
+	 * @param element
+	 *            Parent scenario element
+	 */
+	private void parseParameters(String description, ScenarioElement element) {
+		// Given: Action $Variable1 $Variable2
+		if (description.contains(VARIABLE)) {
+			Iterable<String> params = Splitter.on(VARIABLE).trimResults()
+					.omitEmptyStrings().split(description);
+			// Ignore the first value as it is the action name
+			Iterator<String> iter = params.iterator();
+			iter.next();
+
+			for (Iterator<String> iterator = iter; iterator.hasNext();) {
+				String param = (String) iterator.next();
+				Parameter parameter = specificationFactory.createParameter();
+				parameter.setName(param);
+				element.getParameters().add(parameter);
 			}
 		}
 	}
@@ -611,10 +680,19 @@ public class SpecificationParser implements IntentExternalParserContribution {
 			ModelingUnitQuery query = new ModelingUnitQuery(repositoryAdapter);
 			Collection<ExternalContentReference> externalContentReferences = query
 					.getAllExternalContentReferences();
-			URI uri = SpecificationUtils.getTestURI(parsedElement
-					.getNamedElement());
-			if (!referenceExists(externalContentReferences, uri)) {
-				createReference(parsedElement.getIntentSection(), uri);
+
+			NamedElement namedElement = parsedElement.getNamedElement();
+			Set<TestType> testTypes = SpecificationUtils
+					.getTestTypes(namedElement);
+			for (TestType testType : testTypes) {
+				if (!TestType.MANUAL.equals(testType)) {
+					URI uri = SpecificationUtils.getTestURI(
+							parsedElement.getNamedElement(), testType,
+							specification);
+					if (!referenceExists(externalContentReferences, uri)) {
+						createReference(parsedElement.getIntentSection(), uri);
+					}
+				}
 			}
 		}
 

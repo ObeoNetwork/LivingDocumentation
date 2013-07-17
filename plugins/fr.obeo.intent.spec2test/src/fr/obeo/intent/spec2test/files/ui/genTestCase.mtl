@@ -4,31 +4,40 @@
 
 [template public genTestCase(scenario : Scenario, type : TestType)post (trim())]
 [let pkg : String = getFeaturePackage(scenario.oclAsType(EObject), type)]
-[file (getFeaturePath(scenario.oclAsType(EObject), type)+'/'+scenario.name+'.java', false, 'UTF-8')]
+[file (getFeaturePath(scenario.oclAsType(EObject), type)+'/'+scenario.getCamelCaseName()+'.java', false, 'UTF-8')]
 [genLicence()/]
 package [pkg/];
 import org.junit.Rule;
 import org.junit.Test;
 [for (contxt : Context | scenario.given)]
-import [getContextsPackage(scenario.eContainer(Specification))/].[contxt.name/];
+import [getContextsPackage(scenario.eContainer(Specification))/].[contxt.getCamelCaseName()/];
 [/for]
 
-public class [scenario.name/] {
+public class [scenario.getCamelCaseName()/] {
 [for (contxt : Context | scenario.given)]
 	@Rule
-	public [contxt.name/] context = new [contxt.name/]();
+	public [contxt.getCamelCaseName()/] context = new [contxt.getCamelCaseName()/]();
 [/for]
 
 	@Test
-	public void [scenario.name.toLowerFirst()/]() throws Exception {
+	public void [scenario.getCamelCaseName().toLowerFirst()/]() throws Exception {
 	[for (action : Action | scenario.when)]
-		context.action[action.name/]();
+		context.action[action.getCamelCaseName()/]([action.getParameters()/]);
 	[/for]
 	[for (behaviour : Behaviour | scenario._then)]
-		context.assert[behaviour.name/]();
+		context.assert[behaviour.getCamelCaseName()/]([behaviour.getParameters()/]);
 	[/for]
 	}
 }
 [/file]
 [/let]
 [/template]
+
+[query public getParameters (scenarioElement : ScenarioElement) : String = 
+if scenarioElement.parameters->size()>0 then
+scenarioElement.parameters.name->collect(param|'\"' + param+'\"')->sep(',')
+else
+''
+endif
+/]
+

@@ -24,43 +24,49 @@
 [/template]
 
 [template public getFeaturePath(object : EObject, type:TestType)post (trim())]
-[getBasePath()/][getFeaturePackage(object, type).substituteAll('.', '/')/]
+	[getBasePath()/][getFeaturePackage(object, type).substituteAll('.', '/')/]
 [/template]
 
 [template public getFeaturePackage(object : EObject, type: TestType)post (trim())]
 [if (object.oclIsTypeOf(Specification))]
-	[getPackage(object.oclAsType(Specification), type)/]
-[elseif (object.oclIsTypeOf(Story) or object.oclIsTypeOf(Feature))]
-	[getFeaturePackage(object.eContainer(), type).toLowerFirst()/].[object.oclAsType(NamedElement).name.toLowerFirst()/]
+	[object.oclAsType(Specification).getBasePackage()+'.'+type/]
+[elseif (object.oclIsTypeOf(Story))]
+	[object.eContainer(Specification).getBasePackage()+'.'+type/].stories
 [elseif (object.oclIsTypeOf(Scenario))]
-	[getFeaturePackage(object.eContainer(), type).toLowerFirst()/]
+	[object.eContainer(Specification).getBasePackage()+'.'+type/].stories.[object.eContainer(Story).name.substituteAll(' ', '').toLowerCase()/]
+[else]
+	[object.eContainer(Specification).getBasePackage()+'.'+type/].features
 [/if]
 [/template]
 
 [query public getTestClasses (namedElement : NamedElement, type : TestType) : Set(NamedElement) = 
 if namedElement.oclIsTypeOf(Specification) then 
-getTestTypeFeatures(namedElement.oclAsType(Specification).features, type)
+namedElement.oclAsType(Specification).getTestTypeFeatures(type)
 else if namedElement.oclIsTypeOf(Feature) then 
-getTestTypeFeatures(namedElement.oclAsType(Feature).features, type)->union(namedElement.oclAsType(Feature).stories) 
+namedElement.oclAsType(Feature).getTestTypeStories(type) 
 else 
-namedElement.oclAsType(Story).scenarios 
+namedElement.oclAsType(Story).getTestTypeScenarios(type)
 endif
 endif /]
 
 [template public getBasePath()post (trim())]
 src/
 [/template]
-
-
-[query public getTestTypeFeatures (elements : Set(NamedElement), type : TestType) : Set(NamedElement) = elements->select(element|element.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
+[query public getTestTypeFeatures (specification : Specification, type: TestType) : OrderedSet(Feature) = specification.features->select(element|element.stories.scenarios.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
+[query public getTestTypeStories (feature : Feature, type: TestType) : OrderedSet(Story) = feature.stories->select(element|element.scenarios.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
+[query public getTestTypeScenarios (story : Story, type: TestType) : OrderedSet(Scenario) = story.scenarios->select(element|element.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
 
 [template public getTestClassName (testClass : NamedElement, type: TestType)post (trim()) ]
 [if (testClass.oclIsTypeOf(Scenario))]
-	[testClass.name/]
+	[testClass.getCamelCaseName()/]
 [else]
-	[testClass.name+type.toString().toUpperFirst()/]Tests
+	[testClass.getCamelCaseName()+type.toString().toUpperFirst()/]Tests
 [/if]
 [/template]
+
+[query public getCamelCaseName(namedElement: NamedElement) : String = 
+    invoke('fr.obeo.intent.spec2test.services.NamedElementUtils', 'getCamelCaseName(fr.obeo.intent.specification.NamedElement)', Sequence{namedElement})
+  /]
 
 [template public genLicence () ]
 /*******************************************************************************
