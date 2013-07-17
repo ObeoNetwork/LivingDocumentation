@@ -58,7 +58,7 @@ import fr.obeo.intent.specification.TestType;
  * This parser is able to parse the specification syntax and create the
  * corresponding specification model.
  * 
- * @author
+ * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
 public class SpecificationParser implements IntentExternalParserContribution {
 	private static final String AROBASE = "@";
@@ -131,8 +131,17 @@ public class SpecificationParser implements IntentExternalParserContribution {
 				"So that"), SCENARIO("Scenario"), GIVEN("Given"), WHEN("When"), THEN(
 				"Then");
 
+		/**
+		 * Value.
+		 */
 		protected String value;
 
+		/**
+		 * Default constructor.
+		 * 
+		 * @param value
+		 *            Value
+		 */
 		private SpecificationKeyword(String value) {
 			this.value = value;
 		}
@@ -169,8 +178,16 @@ public class SpecificationParser implements IntentExternalParserContribution {
 		parseScenarios(intentSection, validElements);
 	}
 
-	private void parseStories(IntentSection intentSection,
-			StringBuffer validElements) {
+	/**
+	 * Parse the stories.
+	 * 
+	 * @param intentSection
+	 *            Intent Section
+	 * @param validElements
+	 *            Valid elements
+	 */
+	private void parseStories(final IntentSection intentSection,
+			final StringBuffer validElements) {
 		// Get valid stories
 		StringBuffer validStories = new StringBuffer();
 		for (String element : Splitter.onPattern("\r?\n").trimResults()
@@ -653,20 +670,22 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return True if reference exists in the given list otherwise false
 	 */
 	private boolean referenceExists(
-			Collection<ExternalContentReference> externalContentReferences,
-			URI uri) {
-		if (externalContentReferences.size() == 0)
+			final Collection<ExternalContentReference> externalContentReferences,
+			final URI uri) {
+		if (externalContentReferences.size() == 0) {
 			return false;
+		}
 		for (ExternalContentReference externalContentReference : externalContentReferences) {
-			if (uri.equals(externalContentReference.getUri()))
+			if (uri.equals(externalContentReference.getUri())) {
 				return true;
+			}
 		}
 		return false;
 	}
 
 	@Override
 	public List<ExternalParserCompletionProposal> getCompletionVariablesProposals(
-			Iterable<String> currentSentences) {
+			final Iterable<String> currentSentences) {
 		// Get last written sentence
 		Iterator<String> iterator = currentSentences.iterator();
 		String currentSentence = null;
@@ -747,12 +766,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All roles defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllRoles() {
-		URI uri = URI.createPlatformResourceURI(SPECIFICATION_PATH, true);
-		Resource resource = resourceSet.getResource(uri, true);
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Role role : specification.getRoles()) {
+		for (Role role : spec.getRoles()) {
 			results.add(new ExternalParserCompletionProposal(role.getName(),
 					Role.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
@@ -768,10 +784,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All benefits defined in the specification or en empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllBenefits() {
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Benefit benefit : specification.getBenefits()) {
+		for (Benefit benefit : spec.getBenefits()) {
 			results.add(new ExternalParserCompletionProposal(benefit.getName(),
 					Benefit.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
@@ -787,10 +802,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All capabilities defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllCapabilities() {
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Capability capability : specification.getCapabilities()) {
+		for (Capability capability : spec.getCapabilities()) {
 			results.add(new ExternalParserCompletionProposal(capability
 					.getName(), Capability.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
@@ -806,10 +820,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All contexts defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllContexts() {
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Context context : specification.getAutomationLayer().getContext()) {
+		for (Context context : spec.getAutomationLayer().getContext()) {
 			results.add(new ExternalParserCompletionProposal(context.getName(),
 					Context.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
@@ -825,11 +838,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All behaviours defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllBehaviours() {
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Behaviour behaviour : specification.getAutomationLayer()
-				.getBehaviours()) {
+		for (Behaviour behaviour : spec.getAutomationLayer().getBehaviours()) {
 			results.add(new ExternalParserCompletionProposal(behaviour
 					.getName(), Behaviour.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
@@ -845,11 +856,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All actions defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllActions() {
-		Resource resource = resourceSet.getResource(uri, true);
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Action action : specification.getAutomationLayer().getActions()) {
+		for (Action action : spec.getAutomationLayer().getActions()) {
 			results.add(new ExternalParserCompletionProposal(action.getName(),
 					Action.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
@@ -865,10 +874,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All features defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllFeatures() {
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Feature feature : specification.getFeatures()) {
+		for (Feature feature : spec.getFeatures()) {
 			results.add(new ExternalParserCompletionProposal(feature.getName(),
 					Feature.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
@@ -884,10 +892,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 * @return All stories defined in the specification or an empty list
 	 */
 	private List<ExternalParserCompletionProposal> getAllStories() {
-		Specification specification = (Specification) resource.getContents()
-				.get(0);
+		Specification spec = (Specification) resource.getContents().get(0);
 		List<ExternalParserCompletionProposal> results = Lists.newArrayList();
-		for (Story story : specification.getStories()) {
+		for (Story story : spec.getStories()) {
 			results.add(new ExternalParserCompletionProposal(story.getName(),
 					Story.class.getSimpleName(), null,
 					SpecificationParserActivator.getDefault().getImage(
