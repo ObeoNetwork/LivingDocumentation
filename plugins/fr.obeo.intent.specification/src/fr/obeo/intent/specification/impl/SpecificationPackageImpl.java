@@ -893,10 +893,10 @@ public class SpecificationPackageImpl extends EPackageImpl implements Specificat
 
 		// Initialize enums and add enum literals
 		initEEnum(testTypeEEnum, TestType.class, "TestType");
-		addEEnumLiteral(testTypeEEnum, TestType.UNIT);
+		addEEnumLiteral(testTypeEEnum, TestType.MANUAL);
 		addEEnumLiteral(testTypeEEnum, TestType.PLUGIN);
 		addEEnumLiteral(testTypeEEnum, TestType.UI);
-		addEEnumLiteral(testTypeEEnum, TestType.MANUAL);
+		addEEnumLiteral(testTypeEEnum, TestType.UNIT);
 
 		// Create resource
 		createResource(eNS_URI);

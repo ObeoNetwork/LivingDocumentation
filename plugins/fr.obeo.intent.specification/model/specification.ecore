@@ -76,10 +76,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TestType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TestType">
-    <eLiterals name="unit"/>
+    <eLiterals name="manual"/>
     <eLiterals name="plugin" value="1"/>
     <eLiterals name="ui" value="2"/>
-    <eLiterals name="manual"/>
+    <eLiterals name="unit"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

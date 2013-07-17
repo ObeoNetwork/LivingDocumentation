@@ -19,36 +19,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum TestType implements Enumerator {
 	/**
-	 * The '<em><b>Unit</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #UNIT_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	UNIT(0, "unit", "unit"),
-
-	/**
-	 * The '<em><b>Plugin</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PLUGIN_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	PLUGIN(1, "plugin", "plugin"),
-
-	/**
-	 * The '<em><b>Ui</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #UI_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	UI(2, "ui", "ui"),
-
-	/**
 	 * The '<em><b>Manual</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,22 +26,46 @@ public enum TestType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MANUAL(0, "manual", "manual");
-
-	/**
-	 * The '<em><b>Unit</b></em>' literal value.
+	MANUAL(0, "manual", "manual"), /**
+	 * The '<em><b>Plugin</b></em>' literal object.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Unit</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #UNIT
-	 * @model name="unit"
+	 * @see #PLUGIN_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int UNIT_VALUE = 0;
+	PLUGIN(1, "plugin", "plugin"), /**
+	 * The '<em><b>Ui</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #UI_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	UI(2, "ui", "ui"), /**
+	 * The '<em><b>Unit</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #UNIT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	UNIT(0, "unit", "unit");
+
+	/**
+	 * The '<em><b>Manual</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Manual</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MANUAL
+	 * @model name="manual"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MANUAL_VALUE = 0;
 
 	/**
 	 * The '<em><b>Plugin</b></em>' literal value.
@@ -104,19 +98,19 @@ public enum TestType implements Enumerator {
 	public static final int UI_VALUE = 2;
 
 	/**
-	 * The '<em><b>Manual</b></em>' literal value.
+	 * The '<em><b>Unit</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Manual</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Unit</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #MANUAL
-	 * @model name="manual"
+	 * @see #UNIT
+	 * @model name="unit"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MANUAL_VALUE = 0;
+	public static final int UNIT_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Test Type</b></em>' enumerators.
@@ -126,10 +120,10 @@ public enum TestType implements Enumerator {
 	 */
 	private static final TestType[] VALUES_ARRAY =
 		new TestType[] {
-			UNIT,
+			MANUAL,
 			PLUGIN,
 			UI,
-			MANUAL,
+			UNIT,
 		};
 
 	/**
@@ -180,7 +174,7 @@ public enum TestType implements Enumerator {
 	 */
 	public static TestType get(int value) {
 		switch (value) {
-			case UNIT_VALUE: return UNIT;
+			case MANUAL_VALUE: return MANUAL;
 			case PLUGIN_VALUE: return PLUGIN;
 			case UI_VALUE: return UI;
 		}

@@ -34,7 +34,7 @@ public class TestGenerationNoteImpl extends NoteImpl implements TestGenerationNo
 	 * @generated
 	 * @ordered
 	 */
-	protected static final TestType TYPE_EDEFAULT = TestType.UNIT;
+	protected static final TestType TYPE_EDEFAULT = TestType.MANUAL;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.

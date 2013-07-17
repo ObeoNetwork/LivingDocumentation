@@ -1377,7 +1377,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_u198ZIASEeK9o8Ah05c1sQ" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="viewpoint:DNodeListElement" xmi:id="_u2HtYIASEeK9o8Ah05c1sQ" name="type : TestType = unit">
+        <ownedElements xmi:type="viewpoint:DNodeListElement" xmi:id="_u2HtYIASEeK9o8Ah05c1sQ" name="type : TestType = manual">
           <target xmi:type="ecore:EAttribute" href="specification.ecore#//TestGenerationNote/type"/>
           <semanticElements xmi:type="ecore:EAttribute" href="specification.ecore#//TestGenerationNote/type"/>
           <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_u2IUcIASEeK9o8Ah05c1sQ" labelAlignment="LEFT">
@@ -1400,9 +1400,9 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_u2VIxIASEeK9o8Ah05c1sQ" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
-        <ownedElements xmi:type="viewpoint:DNodeListElement" xmi:id="_u2aoUIASEeK9o8Ah05c1sQ" name="unit">
-          <target xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/unit"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/unit"/>
+        <ownedElements xmi:type="viewpoint:DNodeListElement" xmi:id="_u2aoUIASEeK9o8Ah05c1sQ" name="manual">
+          <target xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/manual"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/manual"/>
           <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_u2fg0IASEeK9o8Ah05c1sQ" labelAlignment="LEFT">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_u2fg0YASEeK9o8Ah05c1sQ"/>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
@@ -1433,9 +1433,9 @@
           </ownedStyle>
           <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
         </ownedElements>
-        <ownedElements xmi:type="viewpoint:DNodeListElement" xmi:id="_uXXagaq0EeKPnMqnW2Tr2g" name="manual">
-          <target xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/manual"/>
-          <semanticElements xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/manual"/>
+        <ownedElements xmi:type="viewpoint:DNodeListElement" xmi:id="_uXXagaq0EeKPnMqnW2Tr2g" name="unit">
+          <target xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/unit"/>
+          <semanticElements xmi:type="ecore:EEnumLiteral" href="specification.ecore#//TestType/unit"/>
           <ownedStyle xmi:type="viewpoint:BundledImage" xmi:id="_uXXagqq0EeKPnMqnW2Tr2g" labelAlignment="LEFT">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_uXXag6q0EeKPnMqnW2Tr2g"/>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
@@ -1526,11 +1526,11 @@
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_QPsOwKOBEeKV3_M3T12IgA" name="[0..*] contexts" sourceNode="_pHkvlVS3EeKZY6HQjC1WIA" targetNode="_pHkvlVS3EeKZY6HQjC1WIA">
         <target xmi:type="ecore:EReference" href="specification.ecore#//Context/contexts"/>
         <semanticElements xmi:type="ecore:EReference" href="specification.ecore#//Context/contexts"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_QPuD8KOBEeKV3_M3T12IgA" sourceArrow="FillDiamond" targetArrow="NoDecoration">
-          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@conditionnalStyles.2/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_QPuD8aOBEeKV3_M3T12IgA"/>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_QPuD8qOBEeKV3_M3T12IgA" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_QPuD86OBEeKV3_M3T12IgA"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="__gLoIe65EeKVK7-oDNv1Pw">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="__gMPMO65EeKVK7-oDNv1Pw" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="__gMPMe65EeKVK7-oDNv1Pw" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="__gMPMu65EeKVK7-oDNv1Pw"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/fr.obeo.mda.pim.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>

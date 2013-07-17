@@ -7,10 +7,10 @@
   <genPackages prefix="Specification" basePackage="fr.obeo.intent" disposableProviderFactory="true"
       ecorePackage="specification.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="specification.ecore#//TestType">
-      <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/unit"/>
+      <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/manual"/>
       <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/plugin"/>
       <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/ui"/>
-      <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/manual"/>
+      <genEnumLiterals ecoreEnumLiteral="specification.ecore#//TestType/unit"/>
     </genEnums>
     <genClasses ecoreClass="specification.ecore#//Specification">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference specification.ecore#//Specification/features"/>
