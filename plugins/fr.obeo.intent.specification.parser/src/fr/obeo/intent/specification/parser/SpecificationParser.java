@@ -56,6 +56,7 @@ import fr.obeo.intent.specification.SpecificationFactory;
 import fr.obeo.intent.specification.Story;
 import fr.obeo.intent.specification.TestGenerationNote;
 import fr.obeo.intent.specification.TestType;
+import fr.obeo.intent.specification.Value;
 
 /**
  * This parser is able to parse the specification syntax and create the
@@ -390,24 +391,63 @@ public class SpecificationParser implements IntentExternalParserContribution {
 										result.indexOf(VARIABLE))).iterator()
 								.next();
 					} else {
-						contextName = Splitter
-								.on(SpecificationKeyword.GIVEN.value + COLON)
-								.trimResults().omitEmptyStrings().split(result)
-								.iterator().next();
+						// Given: MyContext [ParentContext]
+						if (result.contains(OPEN_BRACKET)) {
+							contextName = Splitter
+									.on(SpecificationKeyword.GIVEN.value
+											+ COLON)
+									.trimResults()
+									.omitEmptyStrings()
+									.split(result.substring(0,
+											result.indexOf(OPEN_BRACKET)))
+									.iterator().next();
+						} else {
+							// Given: MyContext
+							contextName = Splitter
+									.on(SpecificationKeyword.GIVEN.value
+											+ COLON).trimResults()
+									.omitEmptyStrings().split(result)
+									.iterator().next();
+						}
 					}
+
+					Context parentContext = null;
+					// Given: MyContext [ParentContext]
+					if (result.contains(OPEN_BRACKET)
+							&& result.contains(CLOSE_BRACKET)) {
+						String parentContextName = result.substring(
+								result.indexOf(OPEN_BRACKET) + 1,
+								result.indexOf(CLOSE_BRACKET));
+						NamedElement namedElement = getNamedElement(
+								parentContextName, Context.class);
+						if (namedElement == null) {
+							parentContext = specificationFactory
+									.createContext();
+							parentContext.setName(contextName);
+							automationLayer.getContext().add(parentContext);
+						} else if (namedElement instanceof Context) {
+							parentContext = (Context) namedElement;
+						}
+					}
+
 					NamedElement namedElement = getNamedElement(contextName,
 							Context.class);
 					Context context = null;
 					if (namedElement == null) {
 						context = specificationFactory.createContext();
 						context.setName(contextName);
+						if (parentContext != null) {
+							context.getContexts().add(parentContext);
+						}
 						automationLayer.getContext().add(context);
+
 					} else if (namedElement instanceof Context) {
 						context = (Context) namedElement;
 					} else {
 						throw new UnsupportedOperationException();
 					}
-					parseParameters(result, context);
+
+					parseParameters(result, context, scenario);
 					scenario.getGiven().add(context);
 				} else if (result.startsWith(SpecificationKeyword.WHEN.value)) {
 					String actionName = null;
@@ -437,7 +477,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					} else {
 						throw new UnsupportedOperationException();
 					}
-					parseParameters(result, action);
+					parseParameters(result, action, scenario);
 
 					scenario.getWhen().add(action);
 				} else if (result.startsWith(SpecificationKeyword.THEN.value)) {
@@ -469,7 +509,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					} else {
 						throw new UnsupportedOperationException();
 					}
-					parseParameters(result, behaviour);
+					parseParameters(result, behaviour, scenario);
 					scenario.getThen().add(behaviour);
 				}
 			}
@@ -483,23 +523,52 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 *            Description to parse
 	 * @param element
 	 *            Parent scenario element
+	 * @param scenario
 	 */
-	private void parseParameters(String description, ScenarioElement element) {
+	private void parseParameters(String description, ScenarioElement element,
+			Scenario scenario) {
 		// Given: Action $Variable1 $Variable2
 		if (description.contains(VARIABLE)) {
-			Iterable<String> params = Splitter.on(VARIABLE).trimResults()
-					.omitEmptyStrings().split(description);
+			Iterable<String> params = Splitter.on(VARIABLE).omitEmptyStrings()
+					.split(description);
 			// Ignore the first value as it is the action name
 			Iterator<String> iter = params.iterator();
 			iter.next();
 
+			int count = 0;
 			for (Iterator<String> iterator = iter; iterator.hasNext();) {
 				String param = (String) iterator.next();
-				Parameter parameter = specificationFactory.createParameter();
-				parameter.setName(param);
-				element.getParameters().add(parameter);
+				String parameterName = element.getName() + count;
+				Parameter parameter = getParameter(parameterName, element);
+				if (parameter == null) {
+					parameter = specificationFactory.createParameter();
+					parameter.setName(parameterName);
+					element.getParameters().add(parameter);
+				}
+				Value value = specificationFactory.createValue();
+				value.setValue(param);
+				value.setParameter(parameter);
+				scenario.getValues().add(value);
+				count++;
 			}
 		}
+	}
+	private Parameter getParameter(final String parameterName,
+			final ScenarioElement element) {
+		UnmodifiableIterator<Parameter> it = Iterators.filter(element
+				.getParameters().iterator(), new Predicate<Parameter>() {
+			public boolean apply(Parameter parameter) {
+				if (parameter != null && parameter instanceof Parameter) {
+					return parameterName.equals(((NamedElement) parameter)
+							.getName());
+				}
+				return false;
+			}
+		});
+		if (it.hasNext()) {
+			return (Parameter) it.next();
+		}
+		return null;
 	}
 
 	/**

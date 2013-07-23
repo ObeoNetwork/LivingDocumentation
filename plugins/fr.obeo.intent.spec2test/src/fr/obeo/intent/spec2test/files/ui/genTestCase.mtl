@@ -22,10 +22,10 @@ public class [scenario.getCamelCaseName()/] {
 	@Test
 	public void [scenario.getCamelCaseName().toLowerFirst()/]() throws Exception {
 	[for (action : Action | scenario.when)]
-		context.action[action.getCamelCaseName()/]([action.getParameters()/]);
+		context.action[action.getCamelCaseName()/]([action.getParameters(scenario)/]);
 	[/for]
 	[for (behaviour : Behaviour | scenario._then)]
-		context.assert[behaviour.getCamelCaseName()/]([behaviour.getParameters()/]);
+		context.assert[behaviour.getCamelCaseName()/]([behaviour.getParameters(scenario)/]);
 	[/for]
 	}
 }
@@ -33,9 +33,9 @@ public class [scenario.getCamelCaseName()/] {
 [/let]
 [/template]
 
-[query public getParameters (scenarioElement : ScenarioElement) : String = 
+[query public getParameters (scenarioElement : ScenarioElement,scenario : Scenario) : String = 
 if scenarioElement.parameters->size()>0 then
-scenarioElement.parameters.name->collect(param|'\"' + param+'\"')->sep(',')
+scenarioElement.parameters->collect(param|'\"'+param.eInverse(Value)->select(value|value.eContainer()=scenario).value->sep(',')+'\"')
 else
 ''
 endif

@@ -28,6 +28,9 @@ public class [contxt.getCamelCaseName()/] extends [getContextInheritance()/] {
 
 	@Override
 	public void setup() {
+	[if (contxt.contexts->size()>0)]
+		super.setup();
+	[/if]
 		// [protected (contxt.getCamelCaseName()+' setup')]
 		// TODO Implement context setup
 		// [/protected]
@@ -35,6 +38,9 @@ public class [contxt.getCamelCaseName()/] extends [getContextInheritance()/] {
 
 	@Override
 	public void tearDown() {
+	[if (contxt.contexts->size()>0)]
+		super.tearDown();
+	[/if]
 		// [protected (contxt.getCamelCaseName()+' tear down')]
 		// TODO Implement context tear down
 		// [/protected]
@@ -77,12 +83,12 @@ public class [contxt.getCamelCaseName()/] extends [getContextInheritance()/] {
 
 [query public getParameters (scenarioElement : ScenarioElement) : String = 
 if scenarioElement.parameters->size()>0 then
-scenarioElement.parameters.name->collect(param|'String ' + param)->sep(',')
+scenarioElement.parameters->collect(param|'String ' + param.getCamelCaseName().toString().toLowerFirst())->sep(',')
 else
 ''
 endif
 /]
 
-[query public getContextInheritance(contxt : Context) : String = if contxt.eContainer(Context)->size()>0 then contxt.eContainer(Context).getCamelCaseName() else 'Context' endif /]
+[query public getContextInheritance(contxt : Context) : String = if contxt.contexts->size()>0 then contxt.contexts->first().getCamelCaseName() else 'Context' endif /]
 
 [query public getScenarios (contxt : Context) : OrderedSet(Scenario) = contxt.eInverse(Scenario)/]
