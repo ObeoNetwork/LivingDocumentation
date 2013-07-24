@@ -41,11 +41,11 @@
 
 [query public getTestClasses (namedElement : NamedElement, type : TestType) : Set(NamedElement) = 
 if namedElement.oclIsTypeOf(Specification) then 
-namedElement.oclAsType(Specification).getTestTypeFeatures(type)
+namedElement.oclAsType(Specification).getTestTypeFeatures(type)->asSet()
 else if namedElement.oclIsTypeOf(Feature) then 
-namedElement.oclAsType(Feature).getTestTypeStories(type) 
+namedElement.oclAsType(Feature).getTestTypeStories(type)->asSet()
 else 
-namedElement.oclAsType(Story).getTestTypeScenarios(type)
+namedElement.oclAsType(Story).getTestTypeContexts(type)->asSet()
 endif
 endif /]
 
@@ -54,6 +54,8 @@ src/
 [/template]
 [query public getTestTypeFeatures (specification : Specification, type: TestType) : OrderedSet(Feature) = specification.features->select(element|element.stories.scenarios.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
 [query public getTestTypeStories (feature : Feature, type: TestType) : OrderedSet(Story) = feature.stories->select(element|element.scenarios.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
+[query public getTestTypeContexts (story : Story, type: TestType) : Sequence(Context) = story.scenarios->select(element|element.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0).given/]
+[query public getTestTypeScenarios (contxt : Context, type: TestType) : OrderedSet(Scenario) = contxt.eInverse(Scenario)->select(element|element.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
 [query public getTestTypeScenarios (story : Story, type: TestType) : OrderedSet(Scenario) = story.scenarios->select(element|element.eAllContents(TestGenerationNote)->select(note|note.type=type)->size()>0)/]
 
 [template public getTestClassName (testClass : NamedElement, type: TestType)post (trim()) ]
@@ -66,6 +68,10 @@ src/
 
 [query public getCamelCaseName(namedElement: NamedElement) : String = 
     invoke('fr.obeo.intent.spec2test.services.NamedElementUtils', 'getCamelCaseName(fr.obeo.intent.specification.NamedElement)', Sequence{namedElement})
+  /]
+
+[query public getContexts(story: Story) : EMap = 
+    invoke('fr.obeo.intent.spec2test.services.StoryUtils', 'getContexts(fr.obeo.intent.specification.Story)', Sequence{story})
   /]
 
 [template public genLicence () ]

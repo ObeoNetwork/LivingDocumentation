@@ -25,13 +25,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.mylyn.docs.intent.collab.common.query.ModelingUnitQuery;
+import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.ReadOnlyException;
 import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.RepositoryAdapter;
+import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.SaveException;
 import org.eclipse.mylyn.docs.intent.core.document.IntentSection;
 import org.eclipse.mylyn.docs.intent.core.modelingunit.ExternalContentReference;
 import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnit;
 import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnitFactory;
-import org.eclipse.mylyn.docs.intent.parser.external.parser.contribution.ExternalParserCompletionProposal;
-import org.eclipse.mylyn.docs.intent.parser.external.parser.contribution.IntentExternalParserContribution;
+import org.eclipse.mylyn.docs.intent.external.parser.contribution.ExternalParserCompletionProposal;
+import org.eclipse.mylyn.docs.intent.external.parser.contribution.IntentExternalParserContribution;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
@@ -546,7 +548,8 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					element.getParameters().add(parameter);
 				}
 				Value value = specificationFactory.createValue();
-				value.setValue(param);
+				value.setValue(param.substring(param.indexOf("'") + 1,
+						param.lastIndexOf("'")).replaceAll("\\\\", ""));
 				value.setParameter(parameter);
 				scenario.getValues().add(value);
 				count++;
@@ -776,10 +779,16 @@ public class SpecificationParser implements IntentExternalParserContribution {
 		}
 		resource = resourceSet.createResource(uri);
 		resource.getContents().add(specification);
-
 		try {
 			resource.save(null);
+			repositoryAdapter.save();
 		} catch (IOException e) {
+			SpecificationParserActivator.log(Status.ERROR, "The resource "
+					+ uri.devicePath() + "cannot be saved", e);
+		} catch (ReadOnlyException e) {
+			SpecificationParserActivator.log(Status.ERROR, "The resource "
+					+ uri.devicePath() + "cannot be saved", e);
+		} catch (SaveException e) {
 			SpecificationParserActivator.log(Status.ERROR, "The resource "
 					+ uri.devicePath() + "cannot be saved", e);
 		}

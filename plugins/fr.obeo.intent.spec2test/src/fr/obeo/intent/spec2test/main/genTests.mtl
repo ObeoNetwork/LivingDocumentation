@@ -16,7 +16,7 @@
 [genManualTestSuites(specification)/]
 
 [comment Contexts/]
-[for (contxt : Context | specification.automationLayer._context)]
+[for (contxt : Context | specification.automationLayer._context->asSet())]
 	[genContext(contxt)/]
 [/for]
 

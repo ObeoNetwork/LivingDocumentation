@@ -2,23 +2,20 @@
 [module genTestCase('http://www.eclipse.org/intent/specification/1.0', 'http://www.eclipse.org/emf/2002/Ecore')]
 [import fr::obeo::intent::spec2test::files::genAutomationUtils /]
 
-[template public genTestCase(scenario : Scenario, type : TestType)post (trim())]
-[let pkg : String = getFeaturePackage(scenario.oclAsType(EObject), type)]
-[file (getFeaturePath(scenario.oclAsType(EObject), type)+'/'+scenario.getCamelCaseName()+'.java', false, 'UTF-8')]
+[template public genTestCase(contxt : Context, scenarios: OrderedSet(Scenario), type : TestType)post (trim())]
+[let pkg : String = getFeaturePackage(scenarios->first().oclAsType(EObject), type)]
+[file (getFeaturePath(scenarios->first().oclAsType(EObject), type)+'/'+contxt.getCamelCaseName()+type.toString().toUpperFirst()+'Tests.java', false, 'UTF-8')]
 [genLicence()/]
 package [pkg/];
 import org.junit.Rule;
 import org.junit.Test;
-[for (contxt : Context | scenario.given)]
-import [getContextsPackage(scenario.eContainer(Specification))/].[contxt.getCamelCaseName()/];
-[/for]
+import [getContextsPackage(contxt.eContainer(Specification))/].[contxt.getCamelCaseName()/];
 
-public class [scenario.getCamelCaseName()/] {
-[for (contxt : Context | scenario.given)]
+public class [contxt.getCamelCaseName()+type.toString().toUpperFirst() +'Tests'/] {
 	@Rule
 	public [contxt.getCamelCaseName()/] context = new [contxt.getCamelCaseName()/]();
-[/for]
 
+[for (scenario : Scenario | scenarios)]
 	@Test
 	public void [scenario.getCamelCaseName().toLowerFirst()/]() throws Exception {
 	[for (action : Action | scenario.when)]
@@ -28,6 +25,7 @@ public class [scenario.getCamelCaseName()/] {
 		context.assert[behaviour.getCamelCaseName()/]([behaviour.getParameters(scenario)/]);
 	[/for]
 	}
+[/for]
 }
 [/file]
 [/let]
@@ -35,7 +33,7 @@ public class [scenario.getCamelCaseName()/] {
 
 [query public getParameters (scenarioElement : ScenarioElement,scenario : Scenario) : String = 
 if scenarioElement.parameters->size()>0 then
-scenarioElement.parameters->collect(param|'\"'+param.eInverse(Value)->select(value|value.eContainer()=scenario).value->sep(',')+'\"')
+scenarioElement.parameters->collect(param|'\"'+param.eInverse(Value)->select(value|value.eContainer()=scenario).value+'\"')->sep(',')
 else
 ''
 endif

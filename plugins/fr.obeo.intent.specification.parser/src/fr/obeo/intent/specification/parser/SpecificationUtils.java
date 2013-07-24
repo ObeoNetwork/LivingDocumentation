@@ -49,7 +49,7 @@ public final class SpecificationUtils {
 	public static URI getTestURI(final NamedElement namedElement,
 			final TestType type, Specification specification) {
 		URI uri = URI.createURI("org.obeonetwork.dsl.uml2.design.tests/"
-				+ getPackagePath(namedElement, type, specification), true);
+				+ getPackagePath(namedElement, type, specification));
 
 		return uri;
 	}
@@ -60,18 +60,25 @@ public final class SpecificationUtils {
 		if (namedElement instanceof Story) {
 			path += "/stories/" + getCamelCaseName(namedElement)
 					+ Character.toUpperCase(type.getName().charAt(0))
-					+ type.getName().substring(1) + "Tests";
+					+ type.getName().substring(1) + "Tests.java";
 		} else if (namedElement instanceof Scenario) {
 			path += "/stories/"
 					+ ((Story) namedElement.eContainer()).getName()
-							.replaceAll(" ", "").toLowerCase() + "/"
-					+ getCamelCaseName(namedElement);
+							.replaceAll(" ", "").toLowerCase()
+					+ "/"
+					+ getCamelCaseName(((Scenario) namedElement).getGiven()
+							.get(0))
+					+ Character.toUpperCase(type.getName().charAt(0))
+					+ type.getName().substring(1)
+					+ "Tests.java#//@methods[name='"
+					+ Character.toLowerCase(getCamelCaseName(namedElement)
+							.charAt(0))
+					+ getCamelCaseName(namedElement).substring(1) + "()']";
 		} else if (namedElement instanceof Feature) {
 			path += "/features/" + getCamelCaseName(namedElement)
 					+ Character.toUpperCase(type.getName().charAt(0))
-					+ type.getName().substring(1) + "Tests";
+					+ type.getName().substring(1) + "Tests.java";
 		}
-		path += ".java";
 		return path;
 	}
 

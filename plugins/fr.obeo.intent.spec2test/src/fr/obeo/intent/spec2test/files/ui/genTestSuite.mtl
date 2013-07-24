@@ -7,7 +7,6 @@
 [comment Test suite /]
 [let pkg : String = getFeaturePackage(namedElement.oclAsType(EObject), type)]
 [file (getFeaturePath(namedElement.oclAsType(EObject), type)+'/'+getTestClassName(namedElement, type)+'.java', false, 'UTF-8')]
-
 [genLicence()/]
 package [pkg/];
 
@@ -15,7 +14,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 [for (testClass : NamedElement | getTestClasses(namedElement,type))]
+[if (testClass.oclIsTypeOf(Context))]
+import [getFeaturePackage(namedElement.oclAsType(EObject),type)/].[namedElement.name.substituteAll(' ', '').toLowerCase()/].[getTestClassName(testClass, type)/];
+[else]
 import [getFeaturePackage(testClass.oclAsType(EObject),type)/].[getTestClassName(testClass, type)/];
+[/if]
 [/for]
 
 @RunWith(Suite.class)
@@ -29,11 +32,11 @@ public class [getTestClassName(namedElement, type)/] {
 [/file]
 [/let]
 [if namedElement.oclIsTypeOf(Feature)]
-	[for (story : Story |namedElement.oclAsType(Feature).getTestTypeStories(type))]
+	[for (story : Story | namedElement.oclAsType(Feature).getTestTypeStories(type))]
 		[genTestSuite(story, type)/]
-		[for (scenario : Scenario | story.scenarios)]
-			[genTestCase(scenario, type)/]
-		[/for]
+			[for (contxt : Context | story.scenarios.given->asSet())]
+				[genTestCase(contxt,story.scenarios->select(sc|sc.given->includes(contxt)), type)/]
+			[/for]
 	[/for]
 [/if]
 [/template]
