@@ -253,49 +253,52 @@ public class SpecificationParser implements IntentExternalParserContribution {
 				feature.getStories().add((Story) story);
 			}
 
-			String roleName = result.get(SpecificationKeyword.AS.value).trim();
-			namedElement = getNamedElement(roleName, Role.class);
-			Role role = null;
-			if (namedElement == null) {
-				role = specificationFactory.createRole();
-				role.setName(roleName);
-				specification.getRoles().add(role);
-			} else if (namedElement instanceof Role) {
-				role = (Role) namedElement;
-			} else {
-				throw new UnsupportedOperationException();
-			}
-			story.setAs(role);
+			if (result.containsKey(SpecificationKeyword.AS.value)) {
+				String roleName = result.get(SpecificationKeyword.AS.value)
+						.trim();
+				namedElement = getNamedElement(roleName, Role.class);
+				Role role = null;
+				if (namedElement == null) {
+					role = specificationFactory.createRole();
+					role.setName(roleName);
+					specification.getRoles().add(role);
+				} else if (namedElement instanceof Role) {
+					role = (Role) namedElement;
+				} else {
+					throw new UnsupportedOperationException();
+				}
+				story.setAs(role);
 
-			String capabilityName = result.get(
-					SpecificationKeyword.I_WANT.value).trim();
-			namedElement = getNamedElement(capabilityName, Capability.class);
-			Capability capability = null;
-			if (namedElement == null) {
-				capability = specificationFactory.createCapability();
-				capability.setName(capabilityName);
-				specification.getCapabilities().add(capability);
-			} else if (namedElement instanceof Capability) {
-				capability = (Capability) namedElement;
-			} else {
-				throw new UnsupportedOperationException();
-			}
-			story.setIWant(capability);
+				String capabilityName = result.get(
+						SpecificationKeyword.I_WANT.value).trim();
+				namedElement = getNamedElement(capabilityName, Capability.class);
+				Capability capability = null;
+				if (namedElement == null) {
+					capability = specificationFactory.createCapability();
+					capability.setName(capabilityName);
+					specification.getCapabilities().add(capability);
+				} else if (namedElement instanceof Capability) {
+					capability = (Capability) namedElement;
+				} else {
+					throw new UnsupportedOperationException();
+				}
+				story.setIWant(capability);
 
-			String benefitName = result.get(SpecificationKeyword.SO_THAT.value)
-					.trim();
-			namedElement = getNamedElement(benefitName, Benefit.class);
-			Benefit benefit = null;
-			if (namedElement == null) {
-				benefit = specificationFactory.createBenefit();
-				benefit.setName(benefitName);
-				specification.getBenefits().add(benefit);
-			} else if (namedElement instanceof Benefit) {
-				benefit = (Benefit) namedElement;
-			} else {
-				throw new UnsupportedOperationException();
+				String benefitName = result.get(
+						SpecificationKeyword.SO_THAT.value).trim();
+				namedElement = getNamedElement(benefitName, Benefit.class);
+				Benefit benefit = null;
+				if (namedElement == null) {
+					benefit = specificationFactory.createBenefit();
+					benefit.setName(benefitName);
+					specification.getBenefits().add(benefit);
+				} else if (namedElement instanceof Benefit) {
+					benefit = (Benefit) namedElement;
+				} else {
+					throw new UnsupportedOperationException();
+				}
+				story.setSoThat(benefit);
 			}
-			story.setSoThat(benefit);
 		}
 	}
 
@@ -425,7 +428,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 						if (namedElement == null) {
 							parentContext = specificationFactory
 									.createContext();
-							parentContext.setName(contextName);
+							parentContext.setName(parentContextName);
 							automationLayer.getContext().add(parentContext);
 						} else if (namedElement instanceof Context) {
 							parentContext = (Context) namedElement;
@@ -606,10 +609,13 @@ public class SpecificationParser implements IntentExternalParserContribution {
 					.split(featurePattern + description);
 			String featureDescription = result
 					.get(SpecificationKeyword.FEATURE.value);
-
-			final String featureName = featureDescription.substring(0,
-					featureDescription.indexOf(OPEN_BRACKET)).trim();
-
+			String featureName;
+			if (featureDescription.contains(OPEN_BRACKET)) {
+				featureName = featureDescription.substring(0,
+						featureDescription.indexOf(OPEN_BRACKET)).trim();
+			} else {
+				featureName = featureDescription;
+			}
 			NamedElement namedElement = getNamedElement(featureName,
 					Feature.class);
 			Feature feature = null;
@@ -624,25 +630,28 @@ public class SpecificationParser implements IntentExternalParserContribution {
 				throw new UnsupportedOperationException();
 			}
 
-			String features = featureDescription.substring(
-					featureDescription.indexOf(OPEN_BRACKET) + 1,
-					featureDescription.indexOf(CLOSE_BRACKET));
-			for (String refFeatureName : Splitter.on(COMMA).trimResults()
-					.omitEmptyStrings().split(features)) {
-				namedElement = getNamedElement(refFeatureName, Feature.class);
-				Feature refFeature = null;
-				if (namedElement == null) {
-					refFeature = specificationFactory.createFeature();
-					refFeature.setName(refFeatureName);
-					specification.getFeatures().add(refFeature);
-					parsedElements.add(new ParsedElement(intentSection,
-							refFeature));
-				} else if (namedElement instanceof Feature) {
-					refFeature = (Feature) namedElement;
-				} else {
-					throw new UnsupportedOperationException();
+			if (featureDescription.contains(OPEN_BRACKET)) {
+				String features = featureDescription.substring(
+						featureDescription.indexOf(OPEN_BRACKET) + 1,
+						featureDescription.indexOf(CLOSE_BRACKET));
+				for (String refFeatureName : Splitter.on(COMMA).trimResults()
+						.omitEmptyStrings().split(features)) {
+					namedElement = getNamedElement(refFeatureName,
+							Feature.class);
+					Feature refFeature = null;
+					if (namedElement == null) {
+						refFeature = specificationFactory.createFeature();
+						refFeature.setName(refFeatureName);
+						specification.getFeatures().add(refFeature);
+						parsedElements.add(new ParsedElement(intentSection,
+								refFeature));
+					} else if (namedElement instanceof Feature) {
+						refFeature = (Feature) namedElement;
+					} else {
+						throw new UnsupportedOperationException();
+					}
+					refFeature.getRefFeatures().add((Feature) feature);
 				}
-				refFeature.getRefFeatures().add((Feature) feature);
 			}
 		}
 	}

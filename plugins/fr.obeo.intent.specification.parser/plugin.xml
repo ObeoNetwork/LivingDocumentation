@@ -2,9 +2,10 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.mylyn.docs.intent.parser.externalparsercontribution">
+         point="org.eclipse.mylyn.docs.intent.external.parser.externalparsercontribution">
       <externalparser
-            class="fr.obeo.intent.specification.parser.SpecificationParser"></externalparser>
+            class="fr.obeo.intent.specification.parser.SpecificationParser">
+      </externalparser>
    </extension>
 
 </plugin>
