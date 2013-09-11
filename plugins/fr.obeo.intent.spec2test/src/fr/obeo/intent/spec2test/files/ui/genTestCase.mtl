@@ -15,7 +15,7 @@ public class [contxt.getCamelCaseName()+type.toString().toUpperFirst() +'Tests'/
 	@Rule
 	public [contxt.getCamelCaseName()/] context = new [contxt.getCamelCaseName()/]();
 
-[for (scenario : Scenario | scenarios)]
+[for (scenario : Scenario | getTestTypeScenarios(contxt, type))]
 	@Test
 	public void [scenario.getCamelCaseName().toLowerFirst()/]() throws Exception {
 	[for (action : Action | scenario.when)]
