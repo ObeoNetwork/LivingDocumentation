@@ -37,12 +37,15 @@ import fr.obeo.intent.specification.Value;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -885,6 +888,17 @@ public class SpecificationParser implements IExternalParser {
 			// Then:
 			variables.addAll(getAllBehaviours());
 		}
+		// Sorting proposals by alphabetical order
+		Collections.sort(variables,
+				new Comparator<ExternalParserCompletionProposal>() {
+
+					@Override
+					public int compare(final ExternalParserCompletionProposal o1,
+							final ExternalParserCompletionProposal o2) {
+						return CommonPlugin.INSTANCE.getComparator().compare(
+								o1.getName(), o2.getName());
+					}
+				});
 		return variables;
 	}
 	/**
