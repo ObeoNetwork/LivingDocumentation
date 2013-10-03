@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Acceleo Spec2test Module Runtime Plug-in
-Bundle-SymbolicName: fr.obeo.intent.spec2test
+Bundle-SymbolicName: fr.obeo.intent.spec2test;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: fr.obeo.intent.spec2test.Activator
 Bundle-Vendor: Eclipse Modeling Project
-Require-Bundle: org.eclipse.core.runtime, 
- fr.obeo.intent.specification, 
+Require-Bundle: org.eclipse.core.runtime,
+ fr.obeo.intent.specification,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.ocl,
@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.acceleo.model;bundle-version="3.3.0",
  org.eclipse.acceleo.profiler;bundle-version="3.3.0",
  org.eclipse.acceleo.engine;bundle-version="3.3.0",
- com.google.guava
+ com.google.guava,
+ org.eclipse.ui,
+ org.eclipse.core.resources
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true

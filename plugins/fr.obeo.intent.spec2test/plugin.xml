@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+      point="org.eclipse.ui.menus">
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+      <command
+            commandId="fr.obeo.intent.spec2tests.command"
+            icon="icon/ExportAction.gif"
+            label="Generate files from Specification"
+            style="push">
+             <visibleWhen
+               checkEnabled="false">
+				<iterate operator="and" ifEmpty="false">
+				      <adapt type="org.eclipse.core.resources.IResource">
+				         <or>
+				            <test property="org.eclipse.core.resources.name" value="*specification"/>
+				         </or>
+				      </adapt>
+				 </iterate>
+         </visibleWhen>
+      </command>
+   </menuContribution>
+</extension>
+<extension
+      point="org.eclipse.ui.commands">
+   <command
+         defaultHandler="fr.obeo.intent.spec2test.ui.GenerateFromSpecificationModelAction"
+         id="fr.obeo.intent.spec2tests.command"
+         name="Generate files from Specification">
+   </command>
+</extension>
+
+</plugin>
