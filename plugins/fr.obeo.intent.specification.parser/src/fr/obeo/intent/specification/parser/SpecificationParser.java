@@ -53,9 +53,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.mylyn.docs.intent.collab.common.query.ModelingUnitQuery;
-import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.ReadOnlyException;
 import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.RepositoryAdapter;
-import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.SaveException;
 import org.eclipse.mylyn.docs.intent.core.document.IntentSection;
 import org.eclipse.mylyn.docs.intent.core.modelingunit.ExternalContentReference;
 import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnit;
@@ -785,14 +783,7 @@ public class SpecificationParser implements IExternalParser {
 		resource.getContents().add(specification);
 		try {
 			resource.save(null);
-			repositoryAdapter.save();
 		} catch (IOException e) {
-			SpecificationParserActivator.log(Status.ERROR, "The resource "
-					+ uri.devicePath() + "cannot be saved", e);
-		} catch (ReadOnlyException e) {
-			SpecificationParserActivator.log(Status.ERROR, "The resource "
-					+ uri.devicePath() + "cannot be saved", e);
-		} catch (SaveException e) {
 			SpecificationParserActivator.log(Status.ERROR, "The resource "
 					+ uri.devicePath() + "cannot be saved", e);
 		}
@@ -893,7 +884,8 @@ public class SpecificationParser implements IExternalParser {
 				new Comparator<ExternalParserCompletionProposal>() {
 
 					@Override
-					public int compare(final ExternalParserCompletionProposal o1,
+					public int compare(
+							final ExternalParserCompletionProposal o1,
 							final ExternalParserCompletionProposal o2) {
 						return CommonPlugin.INSTANCE.getComparator().compare(
 								o1.getName(), o2.getName());
