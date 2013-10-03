@@ -156,23 +156,26 @@ public class SpecificationParser implements IExternalParser {
 
 	@Override
 	public void parse(IntentSection intentSection, String descriptionUnitToParse) {
-		// Get valid elements
-		StringBuffer validElements = new StringBuffer();
-		for (String element : Splitter.onPattern("\r?\n").trimResults()
-				.omitEmptyStrings().split(descriptionUnitToParse)) {
-			if (isValidElement(element)) {
-				validElements.append(element + "\n");
+		// Only parse sections with a title
+		if (intentSection.getTitle() != null) {
+			// Get valid elements
+			StringBuffer validElements = new StringBuffer();
+			for (String element : Splitter.onPattern("\r?\n").trimResults()
+					.omitEmptyStrings().split(descriptionUnitToParse)) {
+				if (isValidElement(element)) {
+					validElements.append(element + "\n");
+				}
 			}
+
+			// Parse features
+			parseFeatures(intentSection, validElements);
+
+			// Parse stories
+			parseStories(intentSection, validElements);
+
+			// Parse scenarios
+			parseScenarios(intentSection, validElements);
 		}
-
-		// Parse features
-		parseFeatures(intentSection, validElements);
-
-		// Parse stories
-		parseStories(intentSection, validElements);
-
-		// Parse scenarios
-		parseScenarios(intentSection, validElements);
 	}
 
 	/**
