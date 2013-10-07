@@ -10,31 +10,6 @@
  *****************************************************************************/
 package fr.obeo.intent.specification.parser;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
-import org.eclipse.mylyn.docs.intent.collab.common.query.ModelingUnitQuery;
-import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.ReadOnlyException;
-import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.RepositoryAdapter;
-import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.SaveException;
-import org.eclipse.mylyn.docs.intent.core.document.IntentSection;
-import org.eclipse.mylyn.docs.intent.core.modelingunit.ExternalContentReference;
-import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnit;
-import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnitFactory;
-import org.eclipse.mylyn.docs.intent.external.parser.contribution.ExternalParserCompletionProposal;
-import org.eclipse.mylyn.docs.intent.external.parser.contribution.IntentExternalParserContribution;
-
 import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Iterators;
@@ -60,13 +35,39 @@ import fr.obeo.intent.specification.TestGenerationNote;
 import fr.obeo.intent.specification.TestType;
 import fr.obeo.intent.specification.Value;
 
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+import org.eclipse.mylyn.docs.intent.collab.common.query.ModelingUnitQuery;
+import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.RepositoryAdapter;
+import org.eclipse.mylyn.docs.intent.core.document.IntentSection;
+import org.eclipse.mylyn.docs.intent.core.modelingunit.ExternalContentReference;
+import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnit;
+import org.eclipse.mylyn.docs.intent.core.modelingunit.ModelingUnitFactory;
+import org.eclipse.mylyn.docs.intent.external.parser.contribution.ExternalParserCompletionProposal;
+import org.eclipse.mylyn.docs.intent.external.parser.contribution.IExternalParser;
+
 /**
  * This parser is able to parse the specification syntax and create the
  * corresponding specification model.
  * 
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
-public class SpecificationParser implements IntentExternalParserContribution {
+public class SpecificationParser implements IExternalParser {
 	private static final String VARIABLE = "$";
 
 	private static final String AROBASE = "@";
@@ -112,19 +113,9 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	private List<ParsedElement> parsedElements = Lists.newArrayList();
 
 	/**
-	 * Specification path.
-	 */
-	private String SPECIFICATION_PATH = "/org.obeonetwork.dsl.uml2.doc.specification/intent.specification";
-
-	/**
 	 * Resource set.
 	 */
 	private ResourceSet resourceSet;
-
-	/**
-	 * Specification URI.
-	 */
-	private URI uri;
 
 	/**
 	 * Specification resource.
@@ -160,30 +151,31 @@ public class SpecificationParser implements IntentExternalParserContribution {
 	 */
 	public SpecificationParser() {
 		resourceSet = new ResourceSetImpl();
-		uri = URI.createPlatformResourceURI(SPECIFICATION_PATH, true);
-		resource = resourceSet.getResource(uri, true);
 		init();
 	}
 
 	@Override
 	public void parse(IntentSection intentSection, String descriptionUnitToParse) {
-		// Get valid elements
-		StringBuffer validElements = new StringBuffer();
-		for (String element : Splitter.onPattern("\r?\n").trimResults()
-				.omitEmptyStrings().split(descriptionUnitToParse)) {
-			if (isValidElement(element)) {
-				validElements.append(element + "\n");
+		// Only parse sections with a title
+		if (intentSection.getTitle() != null) {
+			// Get valid elements
+			StringBuffer validElements = new StringBuffer();
+			for (String element : Splitter.onPattern("\r?\n").trimResults()
+					.omitEmptyStrings().split(descriptionUnitToParse)) {
+				if (isValidElement(element)) {
+					validElements.append(element + "\n");
+				}
 			}
+
+			// Parse features
+			parseFeatures(intentSection, validElements);
+
+			// Parse stories
+			parseStories(intentSection, validElements);
+
+			// Parse scenarios
+			parseScenarios(intentSection, validElements);
 		}
-
-		// Parse features
-		parseFeatures(intentSection, validElements);
-
-		// Parse stories
-		parseStories(intentSection, validElements);
-
-		// Parse scenarios
-		parseScenarios(intentSection, validElements);
 	}
 
 	/**
@@ -780,8 +772,12 @@ public class SpecificationParser implements IntentExternalParserContribution {
 		// Serialize intent.specification
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("specification", new XMLResourceFactoryImpl());
+		URI uri = URI.createURI(repositoryAdapter.getRepository()
+				.getRepositoryURI() + "/intent.specification");
 		try {
-			resource.delete(null);
+			if (resource != null) {
+				resource.delete(null);
+			}
 		} catch (IOException e) {
 			SpecificationParserActivator.log(Status.ERROR, "The resource "
 					+ uri.devicePath() + "cannot be deleted", e);
@@ -790,14 +786,7 @@ public class SpecificationParser implements IntentExternalParserContribution {
 		resource.getContents().add(specification);
 		try {
 			resource.save(null);
-			repositoryAdapter.save();
 		} catch (IOException e) {
-			SpecificationParserActivator.log(Status.ERROR, "The resource "
-					+ uri.devicePath() + "cannot be saved", e);
-		} catch (ReadOnlyException e) {
-			SpecificationParserActivator.log(Status.ERROR, "The resource "
-					+ uri.devicePath() + "cannot be saved", e);
-		} catch (SaveException e) {
 			SpecificationParserActivator.log(Status.ERROR, "The resource "
 					+ uri.devicePath() + "cannot be saved", e);
 		}
@@ -893,6 +882,18 @@ public class SpecificationParser implements IntentExternalParserContribution {
 			// Then:
 			variables.addAll(getAllBehaviours());
 		}
+		// Sorting proposals by alphabetical order
+		Collections.sort(variables,
+				new Comparator<ExternalParserCompletionProposal>() {
+
+					@Override
+					public int compare(
+							final ExternalParserCompletionProposal o1,
+							final ExternalParserCompletionProposal o2) {
+						return CommonPlugin.INSTANCE.getComparator().compare(
+								o1.getName(), o2.getName());
+					}
+				});
 		return variables;
 	}
 	/**
