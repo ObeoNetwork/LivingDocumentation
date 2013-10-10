@@ -51,6 +51,9 @@ Contributors:
 		<module>plugins/fr.obeo.intent.specification</module>
 		<module>plugins/fr.obeo.intent.specification.edit</module>
 		<module>plugins/fr.obeo.intent.specification.editor</module>
+		
+		<module>plugins/fr.obeo.intent.spec2test</module>
+		<module>plugins/fr.obeo.intent.specification.parser</module>
 	</modules>
  	
 	<repositories>
